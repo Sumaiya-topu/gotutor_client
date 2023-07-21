@@ -1,9 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import publicRoutes from "./Router/PublicRoutes";
 
 function App() {
   return (
     <div>
-      <h1 className=" text-rose-500">This is react app</h1>
+      <RouterProvider router={publicRoutes}></RouterProvider>
     </div>
   );
 }
