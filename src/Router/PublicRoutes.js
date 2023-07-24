@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../Authentication/Login/Login";
+
 import Home from "../Pages/Home/Home";
+import Login from "../Authentication/Login/Login";
 
 const publicRoutes = createBrowserRouter([
   {
