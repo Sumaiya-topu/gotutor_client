@@ -4,9 +4,18 @@ import patternBottom from "../../assets/authentication/bg-pattern-01.png";
 import signUpImg from "../../assets/authentication/Sign-up-image.jpg";
 import googleImg from "../../assets/authentication/search.png";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthUser from "../../Hooks/AuthUser";
+import CreateUserHook from "../../Hooks/FetchFunction/CreateUserHook";
 
 const SignUp = () => {
+  const { getToken } = AuthUser();
+  const location = useLocation();
+
+  const query = new URLSearchParams(location.search);
+  const referredBy = query.get("referredBy");
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,7 +24,13 @@ const SignUp = () => {
 
   const handleSignUp = (data) => {
     console.log(data);
+    CreateUserHook(data, navigate);
+    console.log("User data", data);
   };
+
+  if (getToken()) {
+    return navigate("/");
+  }
   return (
     <div className="flex bg-transparent">
       {/* SignUp page image */}
@@ -127,8 +142,8 @@ const SignUp = () => {
                 <option selected disabled>
                   Choose One
                 </option>
-                <option value="user">User</option>
-                <option value="instructor">Instructor</option>
+                <option value="student">Student</option>
+                <option value="tutor">Tutor</option>
               </select>
 
               {errors.role && (
