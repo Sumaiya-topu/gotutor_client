@@ -1,35 +1,18 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
 
   return (
-    <div className="flex bg-[#e4f6fa]">
+    <div className=" h-screen flex items-center bg-[#e4f6fa]">
       {/* login page image */}
-      <div className="w-[100%] md:block hidden relative overflow-hidden">
-        <img
-          className="w-[20%] lg:top-[-70px] md:top-[-40px] right-12 absolute"
-          // src={patternTop}
-          alt="Top pattern"
-        />
-        <div className=" md:flex items-center hidden">
-          <img
-            className="w-[75%] lg:w-[65%] mx-auto md:pt-44 lg:pt-32"
-            //   src={loginImg}
-            alt="login page img"
-          />
-        </div>
-        <img
-          className="w-[20%] lg:bottom-[-70px] md:bottom-[-40px] left-12 absolute"
-          // src={patternBottom}
-          alt="Top pattern"
-        />
-      </div>
+
       {/* login form */}
-      <div className="w-[100%] bg-gradient-to-tr from-[#747ffcef] via-[#4ab2e2e2] to-[#3ae2dfc9] md:rounded-l-3xl">
-        <div className="w-[75%] lg:w-[65%] mx-auto my-24">
+      <div className="w-1/2 mx-auto bg-gradient-to-tr from-[#747ffcef] via-[#4ab2e2bc] to-[#3ae2dfc9] md:rounded-3xl">
+        <div className="w-[75%] lg:w-[65%] mx-auto py-10">
           <h2 className="text-2xl font-medium text-white">
             Hello! Welcome back
           </h2>
@@ -89,7 +72,7 @@ const Login = () => {
             //   onClick={handleGoogleSignIn}
             className="py-2 w-full bg-white border-2 border-[#46e9e7c9] rounded-md  font-medium cursor-pointer flex items-center justify-center gap-3 mb-5"
           >
-            <img className="w-8" alt="google png" /> Sign in with google
+            <FcGoogle></FcGoogle> Sign in with google
           </button>
         </div>
       </div>
