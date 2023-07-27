@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import googleImg from "../../assets/authentication/search.png";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -15,8 +16,8 @@ const Login = () => {
       {/* login page image */}
 
       {/* login form */}
-      <div className="w-1/2 mx-auto bg-white md:rounded-3xl shadow-lg">
-        <div className="w-[75%] lg:w-[65%] mx-auto py-[100px]">
+      <div className="w-11/12 md:w-2/3 lg:w-1/2 mx-auto bg-white md:rounded-3xl shadow-lg">
+        <div className="w-[90%] lg:w-[65%] mx-auto py-[50px] lg:py-[100px]">
           <h2 className="text-2xl font-medium">Hello! Welcome back</h2>
           {/*form start */}
           <form onSubmit={handleSubmit(handleLogin)} className="py-10">
@@ -64,17 +65,21 @@ const Login = () => {
 
             <small className="">
               Don't have an account?{" "}
-              <Link to="/signUp" className="font-medium hover:underline">
+              <Link
+                to="/create-account"
+                className="font-medium hover:underline"
+              >
                 SignUp
               </Link>
             </small>
           </form>
           {/*form end */}
           <button
-            //   onClick={handleGoogleSignIn}
+            // onClick={handleGoogleSignIn}
             className="py-2 w-full bg-white border-2 border-[#46e9e7c9] rounded-md  font-medium cursor-pointer flex items-center justify-center gap-3 mb-5"
           >
-            <FcGoogle></FcGoogle> Sign in with google
+            <img className="w-8" src={googleImg} alt="google png" /> Sign in
+            with google
           </button>
         </div>
       </div>
