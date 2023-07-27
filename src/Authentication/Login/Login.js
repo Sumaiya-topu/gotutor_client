@@ -6,21 +6,23 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
 
+  const handleLogin = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className=" h-screen flex items-center bg-[#e4f6fa]">
       {/* login page image */}
 
       {/* login form */}
-      <div className="w-1/2 mx-auto bg-gradient-to-tr from-[#747ffcef] via-[#4ab2e2bc] to-[#3ae2dfc9] md:rounded-3xl">
-        <div className="w-[75%] lg:w-[65%] mx-auto py-10">
-          <h2 className="text-2xl font-medium text-white">
-            Hello! Welcome back
-          </h2>
+      <div className="w-1/2 mx-auto bg-white md:rounded-3xl shadow-lg">
+        <div className="w-[75%] lg:w-[65%] mx-auto py-[100px]">
+          <h2 className="text-2xl font-medium">Hello! Welcome back</h2>
           {/*form start */}
-          <form className="py-10">
+          <form onSubmit={handleSubmit(handleLogin)} className="py-10">
             {/* input email */}
             <label className="block">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-white">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium ">
                 Email address
               </span>
               <input
@@ -33,12 +35,12 @@ const Login = () => {
             {/* input password */}
             <label className="block mt-5">
               <div className="flex">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-white">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium">
                   Password
                 </span>
                 <Link
                   to="/resetPassword"
-                  className="ml-auto text-sm underline cursor-pointer text-white"
+                  className="ml-auto text-sm underline cursor-pointer text-red-600"
                 >
                   forgot password
                 </Link>
@@ -55,12 +57,12 @@ const Login = () => {
               type="submit"
             />
             <div className="flex items-center py-6">
-              <div className="h-[1px] w-[100%] bg-white"></div>
-              <span className="text-white mx-4">OR</span>
-              <div className="h-[1px] w-[100%] bg-white"></div>
+              <div className="h-[1px] w-[80%] bg-gray-900 "></div>
+              <span className="tmx-4">OR</span>
+              <div className="h-[1px] w-[80%] bg-gray-900 "></div>
             </div>
 
-            <small className="text-white">
+            <small className="">
               Don't have an account?{" "}
               <Link to="/signUp" className="font-medium hover:underline">
                 SignUp
