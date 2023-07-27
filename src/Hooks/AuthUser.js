@@ -29,18 +29,18 @@ export default function AuthUser() {
     return user_info;
   };
 
-  //   const getUserIp = () => {
-  //     const userIp = localStorage.getItem("user_ip");
-  //     const user_ip = JSON.parse(userIp);
-  //     return user_ip;
-  //   };
+  const getUserIp = () => {
+    const userIp = localStorage.getItem("user_ip");
+    const user_ip = JSON.parse(userIp);
+    return user_ip;
+  };
 
   const [token, setToken] = useState(getToken());
   const [user, setUser] = useState(getUser());
   const [userRole, setUserRole] = useState(getUserRole());
   const [email, setEmail] = useState(getUser());
   const [userInfo, setUserInfo] = useState(getUserInfo());
-  //   const [userIp, setUserIp] = useState(getUserIp());
+  const [userIp, setUserIp] = useState(getUserIp());
   // const [removeUserIp , setRemoveUserIp]=useState({});
 
   // console.log("userRole", userRole);
@@ -57,14 +57,25 @@ export default function AuthUser() {
     setUserInfo(userInfo);
     setUser(user);
     setUserRole(userRole);
-    // setUserIp(userIp);
+    setUserIp(userIp);
     navigate("/");
   };
 
   const logout = () => {
     localStorage.clear();
-    window.location.reload();
-    navigate("/");
+    fetch(`http://localhost:5000/api/v1/user/delete-ip/${userInfo?._id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data?.modifiedCount === 1) {
+          window.location.reload();
+          navigate("/");
+        }
+      });
   };
 
   const http = axios.create({
@@ -85,6 +96,6 @@ export default function AuthUser() {
     getUserInfo,
     userInfo,
     logout,
-    // userIp,
+    userIp,
   };
 }

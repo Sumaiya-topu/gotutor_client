@@ -1,14 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import googleImg from "../../assets/authentication/search.png";
+import AuthUser from "../../Hooks/AuthUser";
+import swal from "sweetalert";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { http, setToken, getToken, userInfo, userIp } = AuthUser();
+  console.log("User Ip", userIp);
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
   const { register, handleSubmit, reset } = useForm();
 
   const handleLogin = (data) => {
     console.log(data);
+    http
+      .post("/auth/login", { email: data.email, password: data.password })
+      .then((res) => {
+        console.log("rrrr");
+        if (res?.data?.status === "success") {
+          console.log(res.data.data);
+          swal("Success", "Successfully Login ", "success");
+          setToken(
+            res.data.data.user.email,
+            res.data.data.token,
+            res.data.data.user.role,
+            res.data.data.user,
+            res.data.data.userIp
+          );
+          setLoading(false);
+          // window.location.reload();
+        } else {
+          // console.log("rrrrrr");
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err.response.data.message);
+        setLoading(false);
+        if (
+          err.response.data.message ===
+          "No user Found. Please Create an account"
+        ) {
+          swal("Error", "No user Found. Please Create an account!", "error");
+        }
+        if (
+          err.response.data.message ===
+          "Please check your email to verify your account."
+        ) {
+          swal(
+            "Error",
+            "Please check your email to verify your account!",
+            "error"
+          );
+        }
+        if (err.response.data.message === "email or password are not correct") {
+          swal("Error", "Email or Password Wrong! ", "error");
+        }
+        if (err.response.data.message === "Device limit exceeded") {
+          swal("Error", "Device limit exceeded! ", "error");
+        }
+      });
+    reset();
   };
 
   return (
