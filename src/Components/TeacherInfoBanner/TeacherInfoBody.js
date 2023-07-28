@@ -12,13 +12,14 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
+import Footer from "../Footer";
 
 const TeacherInfoBody = () => {
   return (
-    <div className="infoBodyBg relative h-screen mt-10">
+    <div className="infoBodyBg relative  mt-10">
       {/* information section */}
-      <div className="absolute xl:left-[225px] -top-[120px]">
-        <div className=" w-3/4 xl:w-9/12 mx-auto flex flex-wrap md:flex-nowrap bg-[#7839ff] p-5 xl:py-10">
+      <div className="relative  -top-[120px]">
+        <div className=" w-3/4 xl:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#7839ff] p-5 xl:py-10">
           <div className="text-white p-5 w-full text-start md:border-r border-[#b799f86b]">
             <div className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] ">
               {" "}
@@ -63,35 +64,38 @@ const TeacherInfoBody = () => {
       </div>
       {/* information section end */}
       {/* more detailed contact */}
-      <div className=" absolute left-1/4 top-[250px] grid grid-cols-2 gap-5 w-1/2">
-        {" "}
-        <div className=" mt-20 text-start">
-          <h1 className="text-3xl font-sans">
-            Please Tell Us More About Your Major And Experience.
-          </h1>
-          <p className="mt-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-            tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-          </p>
-        </div>
-        <div>
-          <Card color="transparent" shadow={false}>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-              <div className="mb-4 flex flex-col gap-6">
-                <Input size="lg" label="Name" />
-                <Input size="lg" label="Email" />
-                <Textarea></Textarea>
-              </div>
-              <Button
-                className="mt-6 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                fullWidth
-              >
-                Send
-              </Button>
-            </form>
-          </Card>
+      <div className="h-[70vh] sm:h-[60vh]  w-9/12 xl:w-1/2 mx-auto relative ">
+        <div className=" absolute grid lg:grid-cols-2 gap-10">
+          {" "}
+          <div className=" lg:mt-20 text-start">
+            <h1 className="text-2xl lg:text-3xl font-sans">
+              Please Tell Us More About Your Major And Experience.
+            </h1>
+            <p className="mt-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            </p>
+          </div>
+          <div>
+            <Card color="transparent" shadow={false}>
+              <form className="lg:mt-8 mb-2  max-w-screen-lg">
+                <div className="mb-4 flex flex-col gap-6">
+                  <Input size="lg" label="Name" />
+                  <Input size="lg" label="Email" />
+                  <Textarea></Textarea>
+                </div>
+                <Button
+                  className="mt-6 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                  fullWidth
+                >
+                  Send
+                </Button>
+              </form>
+            </Card>
+          </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

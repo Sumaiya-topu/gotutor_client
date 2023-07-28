@@ -4,13 +4,13 @@ import TeacherInfoBanner from "../../Components/TeacherInfoBanner/TeacherInfoBan
 import "./GetTeacherInformation.css";
 import TeacherInfoBody from "../../Components/TeacherInfoBanner/TeacherInfoBody";
 import ContactForm from "../../Components/TeacherInfoBanner/ContactForm";
+import Footer from "../../Components/Footer";
 const GetTeacherInformation = () => {
   return (
     <div className="TeacherInfoBanner h-screen">
       <ComplexNavbar></ComplexNavbar>
       <TeacherInfoBanner></TeacherInfoBanner>
       <TeacherInfoBody></TeacherInfoBody>
-      {/* <ContactForm></ContactForm> */}
     </div>
   );
 };
