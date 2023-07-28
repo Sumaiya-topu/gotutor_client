@@ -32,7 +32,8 @@ import AuthUser from "../../../Hooks/AuthUser";
 // console.log(userInfo);
 
 function ProfileMenu() {
-  const { logout, userInfo } = AuthUser();
+  const { logout, token } = AuthUser();
+  console.log("userInfo from nav ", token);
   // profile menu component
   const profileMenuItems = [
     {
@@ -54,10 +55,8 @@ function ProfileMenu() {
     {
       label: "Sign Out",
       icon: PowerIcon,
-      onclick: logout,
     },
   ];
-  console.log("from nav", userInfo);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   return (
@@ -84,12 +83,12 @@ function ProfileMenu() {
         </Button>
       </MenuHandler>
       <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon, onclick }, key) => {
+        {profileMenuItems.map(({ label, icon }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
             <MenuItem
               key={label}
-              onClick={closeMenu}
+              onClick={isLastItem ? logout : closeMenu}
               className={`flex items-center gap-2 rounded ${
                 isLastItem
                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
@@ -234,6 +233,7 @@ function NavList() {
 const ComplexNavbar = () => {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+  const { token } = AuthUser();
 
   React.useEffect(() => {
     window.addEventListener(
@@ -265,13 +265,20 @@ const ComplexNavbar = () => {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
 
-        <ProfileMenu />
-        <Link to="/login">
-          {" "}
-          <Button variant="gradient" size="sm">
-            Sign In
-          </Button>
-        </Link>
+        {token ? (
+          <ProfileMenu />
+        ) : (
+          <Link to="/login">
+            {" "}
+            <Button
+              className="absolute top-0 right-0"
+              variant="gradient"
+              size="sm"
+            >
+              Sign In
+            </Button>
+          </Link>
+        )}
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll">
         <NavList />

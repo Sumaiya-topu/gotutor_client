@@ -73,6 +73,7 @@ export default function AuthUser() {
       .then((data) => {
         if (data?.modifiedCount === 1) {
           window.location.reload();
+          navigate("/");
         }
       });
   };
