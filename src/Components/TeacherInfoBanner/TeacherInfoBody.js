@@ -3,10 +3,19 @@ import { FaWpforms } from "react-icons/fa";
 import { HiBadgeCheck } from "react-icons/hi";
 import { GiAchievement } from "react-icons/gi";
 import { TfiWrite } from "react-icons/tfi";
+import "./TeacherInfoBody.css";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Input,
+  Textarea,
+  Typography,
+} from "@material-tailwind/react";
 
 const TeacherInfoBody = () => {
   return (
-    <div className="bg-white relative h-[500px] mt-10">
+    <div className="infoBodyBg relative h-screen mt-10">
       {/* information section */}
       <div className="absolute xl:left-[225px] -top-[120px]">
         <div className=" w-3/4 xl:w-9/12 mx-auto flex flex-wrap md:flex-nowrap bg-[#7839ff] p-5 xl:py-10">
@@ -52,8 +61,37 @@ const TeacherInfoBody = () => {
           </div>
         </div>
       </div>
-
-      <div></div>
+      {/* information section end */}
+      {/* more detailed contact */}
+      <div className=" absolute left-1/4 top-[250px] grid grid-cols-2 gap-5 w-1/2">
+        {" "}
+        <div className=" mt-20 text-start">
+          <h1 className="text-3xl font-sans">
+            Please Tell Us More About Your Major And Experience.
+          </h1>
+          <p className="mt-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+            tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+          </p>
+        </div>
+        <div>
+          <Card color="transparent" shadow={false}>
+            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+              <div className="mb-4 flex flex-col gap-6">
+                <Input size="lg" label="Name" />
+                <Input size="lg" label="Email" />
+                <Textarea></Textarea>
+              </div>
+              <Button
+                className="mt-6 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                fullWidth
+              >
+                Send
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };
