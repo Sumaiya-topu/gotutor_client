@@ -5,12 +5,19 @@ module.exports = withMT({
   theme: {
     extend: {
       screens: {
-        xs: "320px",
+        xxs: "320px",
+        xs: "468px",
         sm: "768px",
         md: "868px",
         lg: "974px",
         xl: "1440px",
       },
+    },
+    color: {
+      primary: "#7839ff",
+      darkGray: "#3a3f60",
+      lightGray: "#616f93",
+      dullWhite: "#fefefe",
     },
   },
   plugins: [],

@@ -1,0 +1,7 @@
+.TeacherInfoBanner{
+    text-align: center;
+        background: linear-gradient(to left, #3a3f60a4,#3a3f60a4), url('../../assets/Background/photo-1509062522246-3755977927d7.avif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+}

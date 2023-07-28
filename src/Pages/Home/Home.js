@@ -1,5 +1,5 @@
 import React from "react";
-import ComplexNavbar from "./Navbar/ComplexNavbar";
+import ComplexNavbar from "../../Components/Navbar/ComplexNavbar";
 
 const Home = () => {
   return (
