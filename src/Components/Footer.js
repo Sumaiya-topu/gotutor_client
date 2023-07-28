@@ -3,11 +3,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="border-4">
+    <div>
       <footer className="w-full bg-[#3a3f60] p-8">
         <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12   text-center md:justify-between">
           <h1 className="text-white text-2xl">
-            Go<span className="text-[#7839ff]">Tutor</span>
+            Go<span className="text-[#7839ff] font-bold">Tutor</span>
           </h1>
           <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
             <li>

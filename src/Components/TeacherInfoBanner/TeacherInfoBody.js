@@ -19,7 +19,7 @@ const TeacherInfoBody = () => {
     <div className="infoBodyBg relative  mt-10">
       {/* information section */}
       <div className="relative  -top-[120px]">
-        <div className=" w-3/4 xl:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#7839ff] p-5 xl:py-10">
+        <div className=" w-3/4 xl:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#7839ff] p-5 xl:py-10 rounded-xl">
           <div className="text-white p-5 w-full text-start md:border-r border-[#b799f86b]">
             <div className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] ">
               {" "}
