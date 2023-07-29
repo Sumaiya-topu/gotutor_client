@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import "./UpdateInfoForm.css";
+import { AiOutlineDoubleLeft } from "react-icons/ai";
 
 const UpdateInfoForm = () => {
   const {
@@ -15,8 +16,15 @@ const UpdateInfoForm = () => {
     console.log("updated data", data);
   };
   return (
-    <div className=" h-screen bg-[#d2d1d1] flex items-center">
+    <div className="updateInfoBg h-screen bg-[#d2d1d1] flex items-center">
       <div className="w-[75%] bg-white p-10 xl:p-20 xl:w-[40%] mx-auto rounded-xl">
+        <div className=" flex justify-end items-center text-[#7839ff] font-sans text-sm mb-5">
+          <AiOutlineDoubleLeft></AiOutlineDoubleLeft>
+          <Link to="/provide-teacher-info" className="">
+            {" "}
+            Go back
+          </Link>
+        </div>
         <div className="flex flex-wrap lg:flex-nowrap gap-5">
           <div className="w-full">
             <h2 className="text-3xl text-[#616f93] font-medium  ">
@@ -29,6 +37,7 @@ const UpdateInfoForm = () => {
               informations.
             </p>
           </div>
+
           <div className="border-dashed border flex items-center border-gray-400 bg-gray-100 p-2 md:p-4 w-full  rounded-lg ">
             <Input
               {...register("cv", { required: true })}
