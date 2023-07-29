@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Footer from "../Footer";
+import { Link } from "react-router-dom";
 
 const TeacherInfoBody = () => {
   return (
@@ -21,10 +22,13 @@ const TeacherInfoBody = () => {
       <div className="relative  -top-[120px]">
         <div className=" w-3/4 xl:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#7839ff] p-5 xl:py-10 rounded-xl">
           <div className="text-white p-5 w-full text-start md:border-r border-[#b799f86b]">
-            <div className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] ">
+            <Link
+              to="/update-your-info"
+              className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] "
+            >
               {" "}
               <FaWpforms className="text-3xl  "></FaWpforms>
-            </div>
+            </Link>
             <p className=" text-[15px] font-sans mt-3">Step 1</p>
             <p className="text-lg font-sans font-light ">
               Enroll The Form & Confirm The Subject
