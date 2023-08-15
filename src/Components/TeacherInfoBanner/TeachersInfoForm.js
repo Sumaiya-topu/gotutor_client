@@ -1,24 +1,28 @@
 import { Input } from "@material-tailwind/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "./UpdateInfoForm.css";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
-import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
-const UpdateInfoForm = () => {
+const TeachersInfoForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleUpdateUser = (data) => {
-    console.log("hello");
-    console.log("updated data", data);
+  const handleTeacherInfo = (data) => {
+    console.log(data);
+    //   CreateUserHook(data, navigate);
+    //   console.log("User data", data);
   };
+
   return (
     <div className="updateInfoBg h-screen bg-[#d2d1d1] flex items-center">
+      {" "}
       <div className="w-[75%] bg-white p-10 xl:p-20 xl:w-[40%] mx-auto rounded-xl">
+        {" "}
         <div className=" flex justify-end items-center text-[#7839ff] font-sans text-sm mb-5">
           <AiOutlineDoubleLeft></AiOutlineDoubleLeft>
           <Link to="/provide-teacher-info" className="">
@@ -39,7 +43,7 @@ const UpdateInfoForm = () => {
             </p>
           </div>
 
-          <div className="border-dashed border flex items-center border-gray-400 bg-gray-100 p-2 md:p-4 w-full  rounded-lg ">
+          {/* <div className="border-dashed border flex items-center border-gray-400 bg-gray-100 p-2 md:p-4 w-full  rounded-lg ">
             <Input
               {...register("cv", { required: true })}
               variant="standard"
@@ -47,11 +51,25 @@ const UpdateInfoForm = () => {
               label="Upload your CV"
               type="file"
             ></Input>
-          </div>
+          </div> */}
         </div>
-        {/*form start */}
-
-        <form onSubmit={handleSubmit(handleUpdateUser)} className="pt-10 pb-0 ">
+        {/* form start */}
+        <form
+          onSubmit={handleSubmit(handleTeacherInfo)}
+          className="pt-10 pb-0 bg-white"
+        >
+          <div clas sName=" flex justify-end">
+            {" "}
+            <div className="border-dashed border w-1/2  border-gray-400 bg-gray-100 p-2 md:p-4 flex just  rounded-lg ">
+              <Input
+                {...register("cv", { required: true })}
+                variant="standard"
+                className=" overflow-hidden"
+                label="Upload your CV"
+                type="file"
+              ></Input>
+            </div>
+          </div>
           <div className="mb-5">
             <Input
               {...register("institution", { required: true })}
@@ -127,11 +145,9 @@ const UpdateInfoForm = () => {
             value="Submit"
           />
         </form>
-
-        {/*form end */}
       </div>
     </div>
   );
 };
 
-export default UpdateInfoForm;
+export default TeachersInfoForm;
