@@ -6,6 +6,7 @@ import SignUp from "../Authentication/SignUp/SignUp";
 import GetTeacherInformation from "../Pages/GetTeacherInformation/GetTeacherInformation";
 // import UpdateInfoForm from "../Components/TeacherInfoBanner/UpdateInfoForm";
 import TeachersInfoForm from "../Components/TeacherInfoBanner/TeachersInfoForm";
+import MyProfile from "../Authentication/SignUp/MyProfile/MyProfile";
 
 const publicRoutes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const publicRoutes = createBrowserRouter([
   {
     path: "/update-your-info",
     element: <TeachersInfoForm></TeachersInfoForm>,
+  },
+  {
+    path: "/my-profile",
+    element: <MyProfile></MyProfile>,
   },
 ]);
 
