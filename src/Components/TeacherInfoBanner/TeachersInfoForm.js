@@ -3,9 +3,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./UpdateInfoForm.css";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthUser from "../../Hooks/AuthUser";
+import UpdateHooks from "../../Hooks/UpdateHooks";
+import server_url from "../../config";
 
 const TeachersInfoForm = () => {
+  const navigate = useNavigate();
+  const { userInfo } = AuthUser();
+  console.log("User from info form", userInfo);
+  const BASE_URL = `${server_url}/users/${userInfo?._id}`;
   const {
     register,
     handleSubmit,
@@ -14,8 +21,17 @@ const TeachersInfoForm = () => {
 
   const handleTeacherInfo = (data) => {
     console.log(data);
-    //   CreateUserHook(data, navigate);
-    //   console.log("User data", data);
+    const newData = {
+      cv: data.cv,
+      institution: data.institution,
+      department: data.department,
+      backgroundMedium: data.backgroundMedium,
+      qualification: data.qualification,
+      address: data.presentLocation,
+    };
+
+    UpdateHooks(BASE_URL, newData, true, "Information Submitted");
+    navigate("/my-profile");
   };
 
   return (
@@ -106,13 +122,13 @@ const TeachersInfoForm = () => {
             ></Input>
           </div>
           <div className="mb-5 flex gap-5 flex-wrap sm:flex-nowrap">
-            <Input
+            {/* <Input
               {...register("email", { required: true })}
               variant="standard"
               className=""
               label="Email"
               type="email"
-            ></Input>
+            ></Input> */}
             <Input
               {...register("phone", { required: true })}
               variant="standard"
@@ -130,13 +146,13 @@ const TeachersInfoForm = () => {
               variant="standard"
               label="Present Location"
             ></Input>
-            <Input
+            {/* <Input
               {...register("permanentAddress", { required: true })}
               className=""
               type="text"
               variant="standard"
               label="Permanent address"
-            ></Input>
+            ></Input> */}
           </div>
 
           <input

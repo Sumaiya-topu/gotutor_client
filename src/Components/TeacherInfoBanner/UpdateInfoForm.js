@@ -13,7 +13,6 @@ const UpdateInfoForm = () => {
   } = useForm();
 
   const handleUpdateUser = (data) => {
-    console.log("hello");
     console.log("updated data", data);
   };
   return (
