@@ -63,7 +63,7 @@ export default function AuthUser() {
 
   const logout = () => {
     localStorage.clear();
-    fetch(`http://localhost:5000/api/v1/user/delete-ip/${userInfo?._id}`, {
+    fetch(`http://localhost:5000/api/v1/auth/delete-ip/${userInfo?._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

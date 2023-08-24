@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar, { ComplexNavbar } from "./Navbar/Navbar";
-import { Button } from "@material-tailwind/react";
+import ComplexNavbar from "../../Components/Navbar/ComplexNavbar";
 
 const Home = () => {
   return (
