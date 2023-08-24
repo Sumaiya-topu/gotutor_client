@@ -6,7 +6,7 @@ import GetUserHook from "../../../Hooks/FetchFunction/GetUserHook";
 import Loader from "../../../ReusableComponents/Loader";
 
 const MyProfile = () => {
-  const [imageUrl, setMyImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [user, setUser] = useState({});
   const [isUserLoading, setIsUserLoading] = useState(true);
 
@@ -17,14 +17,15 @@ const MyProfile = () => {
     GetUserHook(BASE_URL, setUser, setIsUserLoading);
   }, [BASE_URL]);
   useEffect(() => {
-    setMyImageUrl(user?.imageURL);
+    setImageUrl(user?.imageURL);
   }, [user]);
   const handleChangeUploadImage = async (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
     formData.append("image", image);
 
-    singleImageUpload(formData, setMyImageUrl);
+    singleImageUpload(formData, setImageUrl);
+    console.log("imageUrl", imageUrl);
   };
 
   // if (isUserLoading) {

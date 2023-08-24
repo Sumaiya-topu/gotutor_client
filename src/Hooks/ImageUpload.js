@@ -1,10 +1,10 @@
 import server_url from "../config";
 
-export const singleImageUpload = async (formData, setMyImageUrl) => {
+export const singleImageUpload = async (formData, setImageUrl) => {
   const imageBaseUrl = `${server_url}/upload/single-image-upload`;
 
   console.log("LE", formData);
-  console.log("LE 2", setMyImageUrl);
+  console.log("LE 2", setImageUrl);
 
   fetch(imageBaseUrl, {
     method: "POST",
@@ -15,7 +15,7 @@ export const singleImageUpload = async (formData, setMyImageUrl) => {
       console.log("Data: ", data);
       if (data.status === "success") {
         console.log("Response:", data);
-        setMyImageUrl(data.url);
+        setImageUrl(data.url);
       }
     });
 };
