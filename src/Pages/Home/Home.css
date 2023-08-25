@@ -1,0 +1,6 @@
+.heroBg {
+    background: linear-gradient(to right, #323650a4, #09090ba4), url("../../assets/Background/Vue.js-Component-For-Creating-Particles.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
