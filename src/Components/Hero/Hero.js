@@ -14,8 +14,10 @@ const Hero = () => {
     console.log("Search form", data);
   };
   return (
-    <div className=" h-screen flex items-center">
-      <div className=" w-1/2 mx-auto bg-black/20 rounded-lg ">
+    <div className=" h-screen flex items-center justify-evenly">
+      {/* <p>vaaa</p>
+      <p>vaaa</p> */}
+      <div className=" bg-black/20 rounded-lg ">
         {" "}
         <form onSubmit={handleSubmit(handleSearch)} className=" p-10">
           <div className="flex gap-2">
@@ -58,6 +60,15 @@ const Hero = () => {
             </Button>
           </div>
         </form>
+      </div>
+      <div className="">
+        <h3 className="text-white/90 text-end">
+          <span className="text-2xl">Welcome to</span> - <br />{" "}
+          <span className="text-6xl">
+            Go<span className="text-[#7839ff] font-bold">Tutor</span>
+          </span>{" "}
+          <br /> Your Path to Academic Excellence!
+        </h3>
       </div>
     </div>
   );
