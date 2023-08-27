@@ -14,81 +14,83 @@ const Hero = () => {
     console.log("Search form", data);
   };
   return (
-    <div>
-      <div className=" h-[600px] flex gap-10  w-2/3 mx-auto">
-        {/* <p>vaaa</p>
+    <div className="mb-44">
+      <div className="">
+        <div className=" h-[600px] flex gap-10  w-2/3 mx-auto">
+          {/* <p>vaaa</p>
       <p>vaaa</p> */}
-        <div className="flex items-center  w-full">
-          <div className=" bg-black/20 rounded-lg w-full">
-            {" "}
-            <form onSubmit={handleSubmit(handleSearch)} className=" p-10">
-              <div className="flex gap-2">
-                <Input
-                  {...register("class")}
-                  color="indigo"
-                  label="Class"
-                  className=""
-                  type="text"
-                ></Input>
-                <Input
-                  {...register("medium")}
-                  color="indigo"
-                  label="Medium"
-                  className=""
-                  type="text"
-                ></Input>
-              </div>
-              <div className="flex gap-2 mt-2">
-                <Input
-                  {...register("localArea")}
-                  color="indigo"
-                  label="Local Area"
-                  className=""
-                  type="text"
-                ></Input>
-                <Input
-                  {...register("district")}
-                  color="indigo"
-                  label="District"
-                  className=" "
-                  type="text"
-                ></Input>
-                <Button
-                  type="submit"
-                  className="shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                  fullWidth
-                >
-                  Search
-                </Button>
-              </div>
-            </form>
+          <div className="flex items-center  w-full">
+            <div className=" bg-black/20 rounded-lg w-full ">
+              {" "}
+              <form onSubmit={handleSubmit(handleSearch)} className=" p-10">
+                <div className="flex gap-2">
+                  <Input
+                    {...register("class")}
+                    color="indigo"
+                    label="Class"
+                    className=""
+                    type="text"
+                  ></Input>
+                  <Input
+                    {...register("medium")}
+                    color="indigo"
+                    label="Medium"
+                    className=""
+                    type="text"
+                  ></Input>
+                </div>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    {...register("localArea")}
+                    color="indigo"
+                    label="Local Area"
+                    className=""
+                    type="text"
+                  ></Input>
+                  <Input
+                    {...register("district")}
+                    color="indigo"
+                    label="District"
+                    className=" "
+                    type="text"
+                  ></Input>
+                  <Button
+                    type="submit"
+                    className="shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                    fullWidth
+                  >
+                    Search
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="mt-36 ">
+            <h3 className="text-white/90 text-end font-sans">
+              <span className="text-3xl">Welcome to</span> - <br />{" "}
+              <span className="text-6xl ">
+                Go<span className="text-[#7839ff] font-bold">Tutor</span>
+              </span>{" "}
+            </h3>
+            <p className="text-white/90 mt-5 text-end">
+              <span className="text-xl font-sans">Your Path to Academic</span>{" "}
+              <br />{" "}
+              <span className="text-7xl text-[#ff6739] font-semibold font-serif">
+                {" "}
+                Excellence!
+              </span>
+            </p>
           </div>
         </div>
-        <div className="mt-36 ">
-          <h3 className="text-white/90 text-end font-sans">
-            <span className="text-3xl">Welcome to</span> - <br />{" "}
-            <span className="text-6xl ">
-              Go<span className="text-[#7839ff] font-bold">Tutor</span>
-            </span>{" "}
-          </h3>
-          <p className="text-white/90 mt-5 text-end">
-            <span className="text-xl font-sans">Your Path to Academic</span>{" "}
-            <br />{" "}
-            <span className="text-7xl text-[#ff6739] font-semibold font-serif">
-              {" "}
-              Excellence!
-            </span>
-          </p>
-        </div>
       </div>
-      <div className="w-3/4 mx-auto">
+      <div className=" w-2/3 mx-auto">
         <div className="flex justify-center ">
           <div className="w-full flex items-end ">
             <div>
               <h1 className=" text-5xl font-serif text-white/90 mr-7 mb-5 text-right">
                 Why Choose Us?
               </h1>
-              <div className="bg-white/90 rounded-l-lg ">
+              <div className="bg-white/90  ">
                 <p className="px-10 pt-10 pb-[100px] text-right font-sans text-black/80   ">
                   We are providing the best teachers.{" "}
                   <span className="text-[#7839ff] text-xl">
