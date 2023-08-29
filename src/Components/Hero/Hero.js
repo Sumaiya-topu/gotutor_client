@@ -1,4 +1,4 @@
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input, Option, Select } from "@material-tailwind/react";
 import React from "react";
 // import "./Hero.css";
 import { useForm } from "react-hook-form";
@@ -7,14 +7,17 @@ const Hero = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+
+  const selectedOption = watch("backgroundMedium");
 
   const handleSearch = (data) => {
     console.log("Search form", data);
   };
   return (
-    <div className="mb-44">
+    <div className="">
       <div className="">
         <div className=" h-[600px] flex gap-10  w-2/3 mx-auto">
           {/* <p>vaaa</p>
@@ -31,13 +34,25 @@ const Hero = () => {
                     className=""
                     type="text"
                   ></Input>
-                  <Input
-                    {...register("medium")}
-                    color="indigo"
-                    label="Medium"
-                    className=""
-                    type="text"
-                  ></Input>
+                  <div className="w-72">
+                    <Select
+                      {...register("backgroundMedium")}
+                      label="Select Medium"
+                      animate={{
+                        mount: { y: 0 },
+                        unmount: { y: 25 },
+                      }}
+                    >
+                      <Option value="bangla">Bangla Medium</Option>
+                      <Option value="englishMedium">English Medium</Option>
+                      <Option
+                        value="englishVersion"
+                        {...register("englishVersion")}
+                      >
+                        English Version
+                      </Option>
+                    </Select>
+                  </div>
                 </div>
                 <div className="flex gap-2 mt-2">
                   <Input
@@ -45,13 +60,6 @@ const Hero = () => {
                     color="indigo"
                     label="Local Area"
                     className=""
-                    type="text"
-                  ></Input>
-                  <Input
-                    {...register("district")}
-                    color="indigo"
-                    label="District"
-                    className=" "
                     type="text"
                   ></Input>
                   <Button
@@ -124,10 +132,9 @@ const Hero = () => {
             <div className=" text-white/90 pl-10 pb-10 font-sans">
               <h3 className="text-xl mb-3">Comprehensive Curriculum:</h3>
               <p className=" text-justify">
-                Our team of experienced and dedicated educators are experts in
-                their respective fields. They are passionate about teaching and
-                are committed to helping you grasp even the most complex
-                concepts.
+                Our meticulously designed curriculum covers a wide range of
+                subjects and topics. From foundational concepts to advanced
+                lessons, we've got you covered.
               </p>
             </div>{" "}
             <div className=" text-white/90 pb-10 pr-10 font-sans">
