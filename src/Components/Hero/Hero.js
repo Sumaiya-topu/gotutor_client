@@ -91,63 +91,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className=" w-2/3 mx-auto">
-        <div className="flex justify-center ">
-          <div className="w-full flex items-end ">
-            <div>
-              <h1 className=" text-5xl font-serif text-white/90 mr-7 mb-5 text-right">
-                Why Choose Us?
-              </h1>
-              <div className="bg-white/90  ">
-                <p className="px-10 pt-10 pb-[100px] text-right font-sans text-black/80   ">
-                  We are providing the best teachers.{" "}
-                  <span className="text-[#7839ff] text-xl">
-                    Around 200 users have <br /> chosen us.
-                  </span>{" "}
-                  We are nurturing our teachers by providing batches to reach
-                  them to their desired audiance.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-10 w-full bg-[#7839ff] rounded-t-lg ">
-            <div className=" text-white/90 pl-10 pt-10 font-sans  ">
-              <h3 className="text-xl mb-3">Expert Educators:</h3>
-              <p className=" text-justify">
-                Our team of experienced and dedicated educators are experts in
-                their respective fields. They are passionate about teaching and
-                are committed to helping you grasp even the most complex
-                concepts.
-              </p>
-            </div>
-            <div className=" text-white/90 pr-10 pt-10 font-sans ">
-              <h3 className="text-xl mb-3">Personalized Learning:</h3>
-              <p className=" text-justify">
-                We understand that every student has unique learning needs.
-                That's why we tailor our teaching approach to suit your
-                individual pace, learning style, and goals. Your success is our
-                priority.
-              </p>
-            </div>{" "}
-            <div className=" text-white/90 pl-10 pb-10 font-sans">
-              <h3 className="text-xl mb-3">Comprehensive Curriculum:</h3>
-              <p className=" text-justify">
-                Our meticulously designed curriculum covers a wide range of
-                subjects and topics. From foundational concepts to advanced
-                lessons, we've got you covered.
-              </p>
-            </div>{" "}
-            <div className=" text-white/90 pb-10 pr-10 font-sans">
-              <h3 className="text-xl mb-3">Supportive Environment:</h3>
-              <p className=" text-justify">
-                Beyond academics, we foster a supportive and motivating
-                environment. We believe in nurturing not only intellectual
-                growth but also personal development.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
