@@ -17,8 +17,40 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-const SimilarBooks = () => {
+const AvailableTuition = () => {
   const [demoData, setDemoData] = useState([
+    {
+      id: 552258,
+      class: "Nursery , All Subject",
+      location: "Mohammadpur",
+      days: "5 days/week",
+      salary: "5000-6000 tk/month",
+      postedOn: "24 Aug, 2023 07:57 PM",
+    },
+    {
+      id: 552258,
+      class: "Nursery , All Subject",
+      location: "Mohammadpur",
+      days: "5 days/week",
+      salary: "5000-6000 tk/month",
+      postedOn: "24 Aug, 2023 07:57 PM",
+    },
+    {
+      id: 552258,
+      class: "Nursery , All Subject",
+      location: "Mohammadpur",
+      days: "5 days/week",
+      salary: "5000-6000 tk/month",
+      postedOn: "24 Aug, 2023 07:57 PM",
+    },
+    {
+      id: 552258,
+      class: "Nursery , All Subject",
+      location: "Mohammadpur",
+      days: "5 days/week",
+      salary: "5000-6000 tk/month",
+      postedOn: "24 Aug, 2023 07:57 PM",
+    },
     {
       id: 552258,
       class: "Nursery , All Subject",
@@ -77,7 +109,7 @@ const SimilarBooks = () => {
   //   }, []);
 
   return (
-    <div className="bg-white/90">
+    <div className="">
       <div className="bg-[#7839ff] w-2/3 mx-auto p-20 rounded-b-lg">
         <h1 className="text-3xl text-white font-semibold">
           {" "}
@@ -159,4 +191,4 @@ const SimilarBooks = () => {
   );
 };
 
-export default SimilarBooks;
+export default AvailableTuition;

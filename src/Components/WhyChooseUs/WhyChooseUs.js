@@ -2,13 +2,13 @@ import React from "react";
 
 const WhyChooseUs = () => {
   return (
-    <div className="bg-white py-20">
+    <div className=" pt-40">
       {" "}
       <div className=" w-2/3 mx-auto">
         <div className="flex justify-center ">
           <div className="w-full flex items-end ">
             <div>
-              <h1 className=" text-5xl font-serif text-black/80 mr-7 mb-5 text-right font-bold">
+              <h1 className=" text-5xl font-serif text-white mr-7 mb-5 text-right font-bold">
                 Why Choose Us?
               </h1>
               <div className="bg-white/90  ">

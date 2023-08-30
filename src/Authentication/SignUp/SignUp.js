@@ -54,7 +54,7 @@ const SignUp = () => {
         />
       </div>
       {/* SignUp form */}
-      <div className="w-[100%] bg-gradient-to-tr from-[#292a56] via-[#323666] to-[#434b8c] md:rounded-l-3xl">
+      <div className="w-[100%] bg-[#7839ff] md:rounded-l-3xl">
         <div className="w-[75%] lg:w-[65%] mx-auto my-24">
           <h2 className="text-2xl font-medium text-white">
             Create your account

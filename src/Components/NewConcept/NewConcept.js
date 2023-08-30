@@ -10,41 +10,9 @@ import pattern1 from "../../assets/authentication/bg-pattern-02.png";
 
 const NewConcept = () => {
   return (
-    <div className="bg-white/90">
+    <div className="bg-white/90 w-2/3 mx-auto">
       <div className=" ">
-        <div className=" w-2/3 mx-auto grid grid-cols-3 gap-5  pt-20">
-          <div className="p-5 border-r-2 border-r-[#d3d3d3] ">
-            <SiTaichigraphics className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></SiTaichigraphics>
-            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
-              Follow Technology Trend
-            </h1>
-            <p className=" mt-2">
-              Stay Ahead with Modern Learning Tools. Embrace the Latest in
-              Educational Technology.
-            </p>
-          </div>
-          <div className="p-5 border-r-2 border-r-[#d3d3d3] ">
-            <FaGlobe className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></FaGlobe>
-            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
-              Learn Everywhere
-            </h1>
-            <p className=" mt-2">
-              Education Beyond Boundaries, Anytime, Anywhere.Empowering Learning
-              on Your Terms{" "}
-            </p>
-          </div>
-          <div className="p-5 border ">
-            <BsPeopleFill className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></BsPeopleFill>
-            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
-              Learning Groups Community
-            </h1>
-            <p className=" mt-2">
-              Connect, Collaborate, Excel Together.Nurturing Success Through
-              Group Learning
-            </p>
-          </div>
-        </div>
-        <div className="mt-20">
+        <div className="">
           <img className="w-[180px] ml-20" src={pattern1} alt="" />
           <h1 className="text-center font-light  text-5xl text-[#7839ff] ">
             New Concept
@@ -86,6 +54,38 @@ const NewConcept = () => {
               src={brainImage}
               alt=""
             />
+          </div>
+        </div>
+        <div className=" w-11/12 mx-auto grid grid-cols-3 gap-5  py-20">
+          <div className="p-5 border-r-2 border-r-[#d3d3d3] ">
+            <SiTaichigraphics className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></SiTaichigraphics>
+            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
+              Follow Technology Trend
+            </h1>
+            <p className=" mt-2">
+              Stay Ahead with Modern Learning Tools. Embrace the Latest in
+              Educational Technology.
+            </p>
+          </div>
+          <div className="p-5 border-r-2 border-r-[#d3d3d3] ">
+            <FaGlobe className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></FaGlobe>
+            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
+              Learn Everywhere
+            </h1>
+            <p className=" mt-2">
+              Education Beyond Boundaries, Anytime, Anywhere.Empowering Learning
+              on Your Terms{" "}
+            </p>
+          </div>
+          <div className="p-5 border ">
+            <BsPeopleFill className="mb-3 font-extrabold text-4xl text-[#b9b7b7]"></BsPeopleFill>
+            <h1 className="text-2xl text-[#b9b7b7] font-bold  ">
+              Learning Groups Community
+            </h1>
+            <p className=" mt-2">
+              Connect, Collaborate, Excel Together.Nurturing Success Through
+              Group Learning
+            </p>
           </div>
         </div>
       </div>
