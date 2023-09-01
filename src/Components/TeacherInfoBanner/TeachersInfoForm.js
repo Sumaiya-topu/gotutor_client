@@ -46,6 +46,7 @@ const TeachersInfoForm = () => {
     console.log(data);
     const newData = {
       cv: cvFile,
+      phone: data.phone,
       institution: data.institution,
       department: data.department,
       backgroundMedium: data.backgroundMedium,
@@ -53,6 +54,9 @@ const TeachersInfoForm = () => {
       preferredArea: data.preferredArea,
       preferredSubject: data.preferredSubject,
       preferredClass: data.preferredClass,
+      expectedSalary: data.expectedSalary,
+      preferredMedium: data.preferredMedium,
+      daysPerWeek: data.daysPerWeek,
     };
 
     UpdateHooks(BASE_URL, newData, true, "Information Submitted");
@@ -180,13 +184,38 @@ const TeachersInfoForm = () => {
               label="Preferred class"
             ></Input>
           </div>
-          <Input
-            {...register("preferredSubject", { required: true })}
-            className=""
-            type="text"
-            variant="standard"
-            label="Preferred subject"
-          ></Input>
+          <div className="mb-5 flex gap-5 flex-wrap sm:flex-nowrap ">
+            <Input
+              {...register("preferredSubject", { required: true })}
+              className=""
+              type="text"
+              variant="standard"
+              label="Preferred subject"
+            ></Input>
+            <Input
+              {...register("expectedSalary", { required: true })}
+              className=""
+              type="text"
+              variant="standard"
+              label="Expected salary"
+            ></Input>
+          </div>
+          <div className="mb-5 flex gap-5 flex-wrap sm:flex-nowrap ">
+            <Input
+              {...register("preferredMedium", { required: true })}
+              className=""
+              type="text"
+              variant="standard"
+              label="Preferred medium"
+            ></Input>
+            <Input
+              {...register("daysPerWeek", { required: true })}
+              className=""
+              type="text"
+              variant="standard"
+              label="Days/Week"
+            ></Input>
+          </div>
 
           <input
             className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer"
