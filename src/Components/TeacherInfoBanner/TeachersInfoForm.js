@@ -45,6 +45,7 @@ const TeachersInfoForm = () => {
   const handleTeacherInfo = (data) => {
     console.log(data);
     const newData = {
+      role: "tutor",
       cv: cvFile,
       phone: data.phone,
       institution: data.institution,
@@ -57,6 +58,7 @@ const TeachersInfoForm = () => {
       expectedSalary: data.expectedSalary,
       preferredMedium: data.preferredMedium,
       daysPerWeek: data.daysPerWeek,
+      experience: data.experience,
     };
 
     UpdateHooks(BASE_URL, newData, true, "Information Submitted");
@@ -216,6 +218,13 @@ const TeachersInfoForm = () => {
               label="Days/Week"
             ></Input>
           </div>
+          <Input
+            {...register("experience")}
+            className=""
+            type="text"
+            variant="standard"
+            label="Experience (If any)"
+          ></Input>
 
           <input
             className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer"

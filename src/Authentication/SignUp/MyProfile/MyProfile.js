@@ -27,13 +27,13 @@ const MyProfile = () => {
   const [open, setOpen] = React.useState(false);
   const toggleOpen = () => setOpen((cur) => !cur);
 
-  const { userInfo } = AuthUser();
+  const { userInfo, role } = AuthUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // console.log("userinfo from profile", userInfo);
+
   const BASE_URL = `${server_url}/users/${userInfo?._id}`;
   useEffect(() => {
     GetUserHook(BASE_URL, setUser, setIsUserLoading);
@@ -41,6 +41,9 @@ const MyProfile = () => {
   useEffect(() => {
     setImageUrl(user?.imageURL);
   }, [user]);
+
+  console.log("user role from profile", user.role);
+
   const handleUploadImage = async (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
@@ -100,107 +103,125 @@ const MyProfile = () => {
               </form>
             </div>
           </div>
-          <button className="py-2 px-10  bg-gradient-to-r bg-[#7839ff] rounded-md text-white font-medium cursor-pointer mt-5">
-            Resume
-          </button>
+          {user.role === "tutor" ? (
+            <button className="py-2 px-10  bg-gradient-to-r bg-[#7839ff] rounded-md text-white font-medium cursor-pointer mt-5">
+              Resume
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
+        <h2 className="text-xl font-semibold mt-5">{user.fullName}</h2>
+      </div>
+      {user.role === "tutor" ? (
         <div>
-          <h2 className="text-xl font-semibold mt-5">{user.fullName}</h2>
-          <div className="flex">
-            <div className=" w-[150px]">
-              {" "}
-              <h3 className="text-black/40 font-bold">ID #{user.memberId}.</h3>
-            </div>
-            {/* contact info section */}
-            <Popover placement="right">
-              <PopoverHandler>
-                <p className="text-red-500 hover:text-black">Contact</p>
-              </PopoverHandler>
-              <PopoverContent className="w-72">
-                <div className="mb-4 flex items-center gap-4 border-b border-blue-gray-50 pb-4">
-                  <Avatar src={imageUrl} alt="tania andrew" />
-                  <div>
-                    <Typography variant="h6" color="blue-gray">
-                      {user.fullName}
-                    </Typography>
+          <div>
+            <div className="flex">
+              <div className=" w-[150px]">
+                {" "}
+                <h3 className="text-black/40 font-bold">
+                  ID #{user.memberId}.
+                </h3>
+              </div>
+              {/* contact info section */}
+              <Popover placement="right">
+                <PopoverHandler>
+                  <p className="text-red-500 hover:text-black">Contact</p>
+                </PopoverHandler>
+                <PopoverContent className="w-72">
+                  <div className="mb-4 flex items-center gap-4 border-b border-blue-gray-50 pb-4">
+                    <Avatar src={imageUrl} alt="tania andrew" />
+                    <div>
+                      <Typography variant="h6" color="blue-gray">
+                        {user.fullName}
+                      </Typography>
+                    </div>
                   </div>
-                </div>
-                <List className="p-0">
-                  <a href="#" className="text-initial">
-                    <ListItem>
-                      <ListItemPrefix>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-5 w-5"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </ListItemPrefix>
-                      {user.phone}
-                    </ListItem>
-                  </a>
-                  <a href="#" className="text-initial">
-                    <ListItem>
-                      <ListItemPrefix>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-5 w-5"
-                        >
-                          <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                          <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                        </svg>
-                      </ListItemPrefix>
-                      {user.email}
-                    </ListItem>
-                  </a>
-                </List>
-              </PopoverContent>
-            </Popover>
+                  <List className="p-0">
+                    <a href="#" className="text-initial">
+                      <ListItem>
+                        <ListItemPrefix>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="h-5 w-5"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </ListItemPrefix>
+                        {user.phone}
+                      </ListItem>
+                    </a>
+                    <a href="#" className="text-initial">
+                      <ListItem>
+                        <ListItemPrefix>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="h-5 w-5"
+                          >
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                          </svg>
+                        </ListItemPrefix>
+                        {user.email}
+                      </ListItem>
+                    </a>
+                  </List>
+                </PopoverContent>
+              </Popover>
+            </div>
+            {user.experience ? (
+              <h1>
+                Experience : Having {user.experience} experience as a home
+                tutor.
+              </h1>
+            ) : (
+              <></>
+            )}
+            <p>
+              Qualification :{" "}
+              <span className="font-bold">{user.qualification}</span>{" "}
+            </p>
+            <p>
+              Area Covered :{" "}
+              <span className="font-bold">{user.areaCovered}</span>
+            </p>
           </div>
-          <h1>
-            Experience : Having {user.experience} experience as a home tutor.
-          </h1>
-          <p>
-            Qualification :{" "}
-            <span className="font-bold">{user.qualification}</span>{" "}
-          </p>
-          <p>
-            Area Covered : <span className="font-bold">{user.areaCovered}</span>
-          </p>
+          <div className="mt-20">
+            <hr />
+            <div className="h-1 w-1/3 bg-[#7839ff]"></div>
+            <p className="my-2">
+              Expected minimum salary :{" "}
+              <span className="font-bold">{user.expectedSalary}/month</span>{" "}
+            </p>
+            <div className=" h-[1px] bg-[#7839ff]"></div>
+            <p className="my-2">
+              Days per week :{" "}
+              <span className="font-bold">{user.daysPerWeek} days/week</span>
+            </p>
+            <div className=" h-[1px] bg-[#7839ff]"></div>
+            <p className="my-2">
+              Preferred medium :{" "}
+              <span className="font-bold">{user.preferredMedium}</span>
+            </p>
+            <div className=" h-[1px] bg-[#7839ff]"></div>
+            <p className="my-2">
+              Preferred areas :{" "}
+              <span className="font-bold"> {user.preferredArea}</span>
+            </p>
+            <div className=" h-[1px] bg-[#7839ff]"></div>
+          </div>
         </div>
-      </div>
-      <div className="mt-20">
-        <hr />
-        <div className="h-1 w-1/3 bg-[#7839ff]"></div>
-        <p className="my-2">
-          Expected minimum salary :{" "}
-          <span className="font-bold">{user.expectedSalary}/month</span>{" "}
-        </p>
-        <div className=" h-[1px] bg-[#7839ff]"></div>
-        <p className="my-2">
-          Days per week :{" "}
-          <span className="font-bold">{user.daysPerWeek} days/week</span>
-        </p>
-        <div className=" h-[1px] bg-[#7839ff]"></div>
-        <p className="my-2">
-          Preferred medium :{" "}
-          <span className="font-bold">{user.preferredMedium}</span>
-        </p>
-        <div className=" h-[1px] bg-[#7839ff]"></div>
-        <p className="my-2">
-          Preferred areas :{" "}
-          <span className="font-bold"> {user.preferredArea}</span>
-        </p>
-        <div className=" h-[1px] bg-[#7839ff]"></div>
-      </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
