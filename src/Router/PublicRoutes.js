@@ -7,6 +7,7 @@ import GetTeacherInformation from "../Pages/GetTeacherInformation/GetTeacherInfo
 // import UpdateInfoForm from "../Components/TeacherInfoBanner/UpdateInfoForm";
 import TeachersInfoForm from "../Components/TeacherInfoBanner/TeachersInfoForm";
 import MyProfile from "../Authentication/SignUp/MyProfile/MyProfile";
+import Blog from "../Pages/Blog/Blog";
 
 const publicRoutes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const publicRoutes = createBrowserRouter([
   {
     path: "/my-profile",
     element: <MyProfile></MyProfile>,
+  },
+  {
+    path: "/blog",
+    element: <Blog></Blog>,
   },
 ]);
 

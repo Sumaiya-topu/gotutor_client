@@ -34,7 +34,14 @@ const Hero = () => {
                     className=""
                     type="text"
                   ></Input>
-                  <div className="w-72">
+                  <Input
+                    {...register("subject")}
+                    color="indigo"
+                    label="Subject"
+                    className=""
+                    type="text"
+                  ></Input>
+                  {/* <div className="w-72">
                     <Select
                       {...register("backgroundMedium")}
                       label="Select Medium"
@@ -52,7 +59,7 @@ const Hero = () => {
                         English Version
                       </Option>
                     </Select>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex gap-2 mt-2">
                   <Input

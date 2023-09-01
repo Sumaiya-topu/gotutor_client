@@ -68,7 +68,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" h-screen flex items-center bg-[#e4f6fa]">
+    <div className=" h-screen flex items-center bg-[#fefefe]">
       {/* login page image */}
 
       {/* login form */}
@@ -110,7 +110,7 @@ const Login = () => {
               />
             </label>
             <input
-              className="py-3 w-full bg-gradient-to-r from-[#616efbef] to-[#57ece9c9] mt-10 border-2 border-white rounded-md text-white font-medium cursor-pointer"
+              className="py-3 w-full bg-gradient-to-r bg-[#7839ff] rounded-md text-white font-medium cursor-pointer mt-5"
               type="submit"
             />
             <div className="flex items-center py-6">
@@ -132,7 +132,7 @@ const Login = () => {
           {/*form end */}
           <button
             // onClick={handleGoogleSignIn}
-            className="py-2 w-full bg-white border-2 border-[#46e9e7c9] rounded-md  font-medium cursor-pointer flex items-center justify-center gap-3 mb-5"
+            className="py-2 w-full bg-white border-2 border-[#7839ff] rounded-md  font-medium cursor-pointer flex items-center justify-center gap-3 mb-5"
           >
             <img className="w-8" src={googleImg} alt="google png" /> Sign in
             with google
