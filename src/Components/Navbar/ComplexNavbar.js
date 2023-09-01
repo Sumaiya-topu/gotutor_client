@@ -21,6 +21,7 @@ import {
   PowerIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
+import { CgEditUnmask } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import AuthUser from "../../Hooks/AuthUser";
 
@@ -113,7 +114,12 @@ const navListItems = [
   {
     label: "Tuitions",
     icon: Square3Stack3DIcon,
-    route: "/tuition",
+    route: "/tuition-posts",
+  },
+  {
+    label: "Post",
+    icon: CgEditUnmask,
+    route: "/post-a-tuition",
   },
   {
     label: "Blog",
