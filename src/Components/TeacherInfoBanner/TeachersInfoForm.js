@@ -27,7 +27,9 @@ const TeachersInfoForm = () => {
       department: data.department,
       backgroundMedium: data.backgroundMedium,
       qualification: data.qualification,
-      address: data.presentLocation,
+      preferredArea: data.preferredArea,
+      preferredSubject: data.preferredSubject,
+      preferredClass: data.preferredClass,
     };
 
     UpdateHooks(BASE_URL, newData, true, "Information Submitted");
@@ -144,16 +146,23 @@ const TeachersInfoForm = () => {
               className=""
               type="text"
               variant="standard"
-              label="Present Location"
+              label="Preffered area"
             ></Input>
-            {/* <Input
-              {...register("permanentAddress", { required: true })}
+            <Input
+              {...register("preferredClass", { required: true })}
               className=""
               type="text"
               variant="standard"
-              label="Permanent address"
-            ></Input> */}
+              label="Preferred class"
+            ></Input>
           </div>
+          <Input
+            {...register("preferredSubject", { required: true })}
+            className=""
+            type="text"
+            variant="standard"
+            label="Preferred subject"
+          ></Input>
 
           <input
             className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer"
