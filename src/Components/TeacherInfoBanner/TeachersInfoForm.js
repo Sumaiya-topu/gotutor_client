@@ -1,5 +1,5 @@
 import { Input } from "@material-tailwind/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./UpdateInfoForm.css";
 import { AiOutlineDoubleLeft } from "react-icons/ai";
@@ -7,22 +7,45 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthUser from "../../Hooks/AuthUser";
 import UpdateHooks from "../../Hooks/UpdateHooks";
 import server_url from "../../config";
+import { singleImageUpload } from "../../Hooks/ImageUpload";
+import GetUserHook from "../../Hooks/FetchFunction/GetUserHook";
 
 const TeachersInfoForm = () => {
+  const [cvFile, setCvFile] = useState(null);
+  const [user, setUser] = useState({});
+  const [isUserLoading, setIsUserLoading] = useState(true);
+
   const navigate = useNavigate();
   const { userInfo } = AuthUser();
-  console.log("User from info form", userInfo);
   const BASE_URL = `${server_url}/users/${userInfo?._id}`;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  // useEffect(() => {
+  //   GetUserHook(BASE_URL, setUser, setIsUserLoading);
+  // }, [BASE_URL]);
+
+  useEffect(() => {
+    setCvFile(user?.cvFile);
+  }, [user]);
+
+  const handleUploadCv = async (event) => {
+    const cv = event.target.files[0];
+    // Store the selected CV file in state
+    const formData = new FormData();
+    formData.append("image", cv);
+    //calling the api function to uplaod the cv
+    singleImageUpload(formData, setCvFile);
+  };
+
+  console.log("User from info form", userInfo);
 
   const handleTeacherInfo = (data) => {
     console.log(data);
     const newData = {
-      cv: data.cv,
+      cv: cvFile,
       institution: data.institution,
       department: data.department,
       backgroundMedium: data.backgroundMedium,
@@ -84,6 +107,7 @@ const TeachersInfoForm = () => {
                 variant="standard"
                 className=" overflow-hidden"
                 label="Upload your CV"
+                onChange={handleUploadCv}
                 type="file"
               ></Input>
             </div>
