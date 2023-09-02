@@ -11,6 +11,8 @@ import Blog from "../Pages/Blog/Blog";
 import TuitionPosts from "../Pages/TuitionPosts/TuitionPosts";
 
 import PostYourTuition from "../Pages/PostYourTuition/PostYourTuition";
+import TuitionPostDetails from "../Components/TuitionPostDetails";
+import TutorSearchResult from "../Components/TutorSearchResult/TutorSearchResult";
 
 const publicRoutes = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const publicRoutes = createBrowserRouter([
   {
     path: "/post-a-tuition",
     element: <PostYourTuition></PostYourTuition>,
+  },
+  {
+    path: "/tuition-post/:id",
+    element: <TuitionPostDetails></TuitionPostDetails>,
+  },
+  {
+    path: "/search-profile/:id",
+    element: <TutorSearchResult></TutorSearchResult>,
   },
 ]);
 

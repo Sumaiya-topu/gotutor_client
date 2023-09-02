@@ -1,9 +1,56 @@
-import { Button, Input, Option, Select } from "@material-tailwind/react";
-import React from "react";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Collapse,
+  Dialog,
+  DialogBody,
+  DialogFooter,
+  DialogHeader,
+  Input,
+  Option,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+  Select,
+  Typography,
+} from "@material-tailwind/react";
+import React, { useState } from "react";
 // import "./Hero.css";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import TutorSearchResult from "../TutorSearchResult/TutorSearchResult";
+import AuthUser from "../../Hooks/AuthUser";
+
+function StarIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5 text-yellow-700"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
 
 const Hero = () => {
+  const [tutors, setTutors] = useState([]);
+  const [toggleopen, setToggleOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const { userInfo } = AuthUser();
+
+  const handleOpen = () => setOpen(!open);
+  const toggleOpen = () => setToggleOpen((cur) => !cur);
   const {
     register,
     handleSubmit,
@@ -11,10 +58,14 @@ const Hero = () => {
     formState: { errors },
   } = useForm();
 
-  const selectedOption = watch("backgroundMedium");
-
   const handleSearch = (data) => {
     console.log("Search form", data);
+    fetch(`http://localhost:5000/api/v1/users?searchTerm=${data.searchBox}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Search data", data.data.data.result);
+        setTutors(data.data.data.result);
+      });
   };
   return (
     <div className="">
@@ -25,59 +76,139 @@ const Hero = () => {
           <div className="flex items-center  w-full">
             <div className=" bg-black/20 rounded-lg w-full ">
               {" "}
+              <div className="mt-10 ml-10">
+                {" "}
+                <h1 className=" text-[#ff6739] text-2xl ">
+                  Search for Teacher{" "}
+                </h1>
+                <p className="text-white/50 text-sm">
+                  (According to subjects, areas, classes){" "}
+                </p>
+              </div>
               <form onSubmit={handleSubmit(handleSearch)} className=" p-10">
                 <div className="flex gap-2">
                   <Input
-                    {...register("class")}
+                    {...register("searchBox")}
                     color="indigo"
-                    label="Class"
-                    className=""
-                    type="text"
-                  ></Input>
-                  <Input
-                    {...register("subject")}
-                    color="indigo"
-                    label="Subject"
-                    className=""
-                    type="text"
-                  ></Input>
-                  {/* <div className="w-72">
-                    <Select
-                      {...register("backgroundMedium")}
-                      label="Select Medium"
-                      animate={{
-                        mount: { y: 0 },
-                        unmount: { y: 25 },
-                      }}
-                    >
-                      <Option value="bangla">Bangla Medium</Option>
-                      <Option value="englishMedium">English Medium</Option>
-                      <Option
-                        value="englishVersion"
-                        {...register("englishVersion")}
-                      >
-                        English Version
-                      </Option>
-                    </Select>
-                  </div> */}
-                </div>
-                <div className="flex gap-2 mt-2">
-                  <Input
-                    {...register("localArea")}
-                    color="indigo"
-                    label="Local Area"
+                    label="Search here"
                     className=""
                     type="text"
                   ></Input>
                   <Button
+                    onClick={handleOpen}
                     type="submit"
                     className="shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                    fullWidth
                   >
                     Search
                   </Button>
+                  <Dialog
+                    open={open}
+                    handler={handleOpen}
+                    animate={{
+                      mount: { scale: 1, y: 0 },
+                      unmount: { scale: 0.9, y: -100 },
+                    }}
+                  >
+                    <DialogHeader>Your Search Result</DialogHeader>
+                    {tutors.length !== 0 ? (
+                      tutors.map((tutor) => (
+                        <>
+                          <DialogBody divider>
+                            <Card
+                              color="transparent"
+                              shadow={false}
+                              className="w-full pr-10"
+                            >
+                              <CardHeader
+                                color="transparent"
+                                floated={false}
+                                shadow={false}
+                                className="mx-0 flex items-center gap-4 pt-0 pb-8 borders"
+                              >
+                                <Avatar
+                                  size="lg"
+                                  variant="circular"
+                                  src={tutor.imageURL}
+                                  alt={tutor.fullName}
+                                />
+                                <div className="flex w-full flex-col gap-0.5">
+                                  <div className="flex items-center justify-between">
+                                    <Typography variant="h5" color="blue-gray">
+                                      {tutor.fullName}
+                                    </Typography>
+                                    <div className="5 flex items-center gap-0">
+                                      <StarIcon />
+                                      <StarIcon />
+                                      <StarIcon />
+                                      <StarIcon />
+                                      <StarIcon />
+                                    </div>
+                                  </div>
+                                  <Typography color="blue-gray">
+                                    {tutor.address} || {tutor.expectedSalary}
+                                    tk/month
+                                  </Typography>
+                                </div>
+                              </CardHeader>
+                              <CardBody className="mb-6 p-0 ml-5">
+                                <Typography>
+                                  Expertise :{" "}
+                                  <span className="font-bold">
+                                    {" "}
+                                    {tutor.preferredSubject}{" "}
+                                  </span>{" "}
+                                  <br />
+                                </Typography>
+                                {tutor?.areaCovered ? (
+                                  <Typography>
+                                    Area Covered :{" "}
+                                    <span className="font-bold">
+                                      {tutor.areaCovered}
+                                    </span>
+                                  </Typography>
+                                ) : (
+                                  <></>
+                                )}
+
+                                {userInfo?.role ? (
+                                  <>
+                                    <Link to={`/search-profile/${tutor._id}`}>
+                                      <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
+                                        {" "}
+                                        View Details
+                                      </Button>
+                                    </Link>
+                                  </>
+                                ) : (
+                                  <div className="mt-3">
+                                    <Button
+                                      onClick={toggleOpen}
+                                      className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
+                                    >
+                                      {" "}
+                                      View Details
+                                    </Button>
+                                    <Collapse open={toggleOpen}>
+                                      <Typography className="text-red-500 text-xs">
+                                        <Link to="/login"> Login</Link> to View{" "}
+                                        {tutor.fullName}
+                                        's profile and resume
+                                      </Typography>
+                                    </Collapse>
+                                  </div>
+                                )}
+                              </CardBody>
+                            </Card>
+                          </DialogBody>
+                        </>
+                      ))
+                    ) : (
+                      <DialogBody> No such result</DialogBody>
+                    )}
+                  </Dialog>
                 </div>
               </form>
+              {/* <TutorSearchResult tutors={tutors}></TutorSearchResult> */}
             </div>
           </div>
           <div className="mt-36 ">

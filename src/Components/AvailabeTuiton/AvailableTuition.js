@@ -13,6 +13,9 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
@@ -166,12 +169,19 @@ const AvailableTuition = () => {
                 </CardBody>
 
                 <CardFooter className="pt-0">
-                  <Button
-                    className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                    fullWidth
-                  >
-                    View Details
-                  </Button>
+                  <Popover>
+                    <PopoverHandler>
+                      <Button
+                        className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                        fullWidth
+                      >
+                        View Details
+                      </Button>
+                    </PopoverHandler>
+                    <PopoverContent>
+                      Please login to view contact information and details.
+                    </PopoverContent>
+                  </Popover>
                   <p className="text-right text-xs mt-1">
                     Posted at : {data.postedOn}
                   </p>
