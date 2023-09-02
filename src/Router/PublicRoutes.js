@@ -13,6 +13,7 @@ import TuitionPosts from "../Pages/TuitionPosts/TuitionPosts";
 import PostYourTuition from "../Pages/PostYourTuition/PostYourTuition";
 import TuitionPostDetails from "../Components/TuitionPostDetails";
 import TutorSearchResult from "../Components/TutorSearchResult/TutorSearchResult";
+import TutorsPage from "../Pages/Tutors/TutorsPage";
 
 const publicRoutes = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const publicRoutes = createBrowserRouter([
   {
     path: "/search-profile/:id",
     element: <TutorSearchResult></TutorSearchResult>,
+  },
+  {
+    path: "/tutors",
+    element: <TutorsPage></TutorsPage>,
   },
 ]);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -24,14 +24,24 @@ import {
 import { CgEditUnmask } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import AuthUser from "../../Hooks/AuthUser";
+import GetUserHook from "../../Hooks/FetchFunction/GetUserHook";
 
 // const { userInfo, userRole } = AuthUser();
 // console.log(userInfo);
 
 function ProfileMenu() {
-  const { logout, token } = AuthUser();
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { logout, token, userInfo } = AuthUser();
   console.log("userInfo from nav ", token);
+  useEffect(() => {
+    const baseUrl = `http://localhost:5000/api/v1/users/${userInfo._id}`;
+    GetUserHook(baseUrl, setUser, setLoading);
+  }, [userInfo._id]);
+
   // profile menu component
+
   const profileMenuItems = [
     {
       label: "My Profile",
@@ -44,7 +54,7 @@ function ProfileMenu() {
       route: "/",
     },
   ];
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   const closeMenu = () => setIsMenuOpen(false);
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -59,7 +69,7 @@ function ProfileMenu() {
             size="sm"
             alt="tania andrew"
             className="border border-blue-500 p-0.5"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+            src={user?.imageURL}
           />
           <ChevronDownIcon
             strokeWidth={2.5}
@@ -117,15 +127,20 @@ const navListItems = [
     route: "/tuition-posts",
   },
   {
+    label: "Tutors",
+    icon: CgEditUnmask,
+    route: "/tutors",
+  },
+  {
     label: "Post",
     icon: CgEditUnmask,
     route: "/post-a-tuition",
   },
-  {
-    label: "Blog",
-    icon: CodeBracketSquareIcon,
-    route: "/blog",
-  },
+  // {
+  //   label: "Blog",
+  //   icon: CodeBracketSquareIcon,
+  //   route: "/blog",
+  // },
 ];
 
 function NavList() {
