@@ -28,7 +28,7 @@ const TutorSearchResult = () => {
   return (
     <div>
       <ComplexNavbar></ComplexNavbar>
-      <div className="w-2/3  mx-auto">
+      <div className="md:w-2/3 w-11/12  mx-auto">
         <div className=" h-48 bg-[#D9D9D9]  rounded-b-lg"></div>
         <div>
           <div className="-mt-12 flex items-center justify-between">

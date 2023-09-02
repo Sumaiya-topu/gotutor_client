@@ -29,7 +29,7 @@ const TutorsPage = () => {
   return (
     <div>
       <ComplexNavbar></ComplexNavbar>
-      <div className="w-2/3 mx-auto">
+      <div className="xl:w-2/3 md:w-3/4 mx-auto">
         <div className="my-10">
           <h1 className="text-3xl text-[#7839ff] font-semibold">
             {" "}
@@ -37,7 +37,7 @@ const TutorsPage = () => {
             <span className="font-bold"> ____________________________</span>
           </h1>
         </div>
-        <div className=" grid grid-cols-2 gap-4">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-4">
           {tutors?.map((tutor, i) => (
             <Card
               color="transparent"

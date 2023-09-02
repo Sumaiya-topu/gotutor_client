@@ -71,11 +71,11 @@ const TeachersInfoForm = () => {
   return (
     <div className="w-full mx-auto">
       <ComplexNavbar></ComplexNavbar>{" "}
-      <div className="updateInfoBg h-screen bg-[#d2d1d1] flex items-center">
+      <div className="updateInfoBg   flex items-center">
         {" "}
         <div className="w-[75%] bg-white p-10 xl:p-20 xl:w-[40%] mx-auto rounded-xl">
           {" "}
-          <div className=" flex justify-end items-center text-[#7839ff] font-sans text-sm mb-5">
+          <div className=" flex justify-end items-center text-[#7839ff] font-sans text-sm pb-5">
             <AiOutlineDoubleLeft></AiOutlineDoubleLeft>
             <Link to="/provide-teacher-info" className="">
               {" "}

@@ -19,7 +19,7 @@ const TuitionPostDetails = () => {
   return (
     <div>
       <ComplexNavbar></ComplexNavbar>{" "}
-      <div className="w-1/2 mx-auto mt-20 shadow-lg px-10 py-20">
+      <div className="md:w-3/4 lg:w-1/2 mx-auto mt-20 shadow-lg md:px-10 lg:py-14">
         <DialogHeader className="">
           <h1 className="text-2xl text-[#7839ff] font-sans font-bold">
             {" "}

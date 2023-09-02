@@ -101,7 +101,7 @@ const TuitionPostForm = () => {
   return (
     <div className="updateInfoBg py-20 bg-[#d2d1d1] flex items-center">
       {" "}
-      <div className="w-[75%] bg-white p-10 xl:p-20 xl:w-[40%] mx-auto rounded-xl">
+      <div className="md:w-[75%] bg-white p-5 md:p-10 xl:p-20 xl:w-[40%] mx-auto rounded-xl">
         {" "}
         <div className="flex flex-wrap lg:flex-nowrap gap-5">
           <div className="w-full">
