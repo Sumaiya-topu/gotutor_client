@@ -60,7 +60,7 @@ const FeaturedTeacher = () => {
 
   return (
     <div className="  pt-20 ">
-      <div className="w-2/3 p-20 bg-white rounded-t-lg  mx-auto flex gap-x-10">
+      <div className="xl:w-2/3 p-20 bg-white rounded-t-lg  mx-auto flex gap-x-10 flex-wrap lg:flex-nowrap">
         <div className="flex items-center ">
           {" "}
           <div>
@@ -75,11 +75,11 @@ const FeaturedTeacher = () => {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 ">
+        <div className="grid grid-cols-1 md:grid-cols-2  ">
           {demoData?.map((data, i) => (
             <div className="">
-              <Card className=" w-80 shadow-none hover:translate-y-2 duration-300">
-                <CardHeader floated={false} className="h-60 rounded-none">
+              <Card className=" lg:w-80 shadow-none hover:translate-y-2 duration-300">
+                <CardHeader floated={false} className="md:h-60 rounded-none">
                   <img src={data.image} alt="" />
                 </CardHeader>
                 <CardBody className="text-center">

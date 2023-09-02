@@ -4,7 +4,7 @@ const WhyChooseUs = () => {
   return (
     <div className=" pt-40">
       {" "}
-      <div className=" w-2/3 mx-auto">
+      <div className=" xl:w-2/3 mx-auto">
         <div className="flex justify-center ">
           <div className="w-full flex items-end ">
             <div>
@@ -31,8 +31,8 @@ const WhyChooseUs = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-10 w-full bg-[#7839ff] rounded-t-lg ">
-            <div className=" text-white/90 pl-10 pt-10 font-sans  ">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 w-full bg-[#7839ff] rounded-t-lg p-5 md:p-10 lg:p-0 ">
+            <div className=" text-white/90 lg:pl-10 lg:pt-10 font-sans  ">
               <h3 className="text-xl mb-3">Expert Educators:</h3>
               <p className=" text-justify">
                 Our team of experienced and dedicated educators are experts in
@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
                 concepts.
               </p>
             </div>
-            <div className=" text-white/90 pr-10 pt-10 font-sans ">
+            <div className=" text-white/90 lg:pr-10 lg:pt-10 font-sans ">
               <h3 className="text-xl mb-3">Personalized Learning:</h3>
               <p className=" text-justify">
                 We understand that every student has unique learning needs.
@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
                 priority.
               </p>
             </div>{" "}
-            <div className=" text-white/90 pl-10 pb-10 font-sans">
+            <div className=" text-white/90 lg:pl-10 lg:pb-10 font-sans">
               <h3 className="text-xl mb-3">Comprehensive Curriculum:</h3>
               <p className=" text-justify">
                 Our meticulously designed curriculum covers a wide range of
@@ -58,7 +58,7 @@ const WhyChooseUs = () => {
                 lessons, we've got you covered.
               </p>
             </div>{" "}
-            <div className=" text-white/90 pb-10 pr-10 font-sans">
+            <div className=" text-white/90 lg:pb-10 lg:pr-10 font-sans">
               <h3 className="text-xl mb-3">Supportive Environment:</h3>
               <p className=" text-justify">
                 Beyond academics, we foster a supportive and motivating

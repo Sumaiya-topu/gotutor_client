@@ -35,7 +35,7 @@ const AvailableTuition = () => {
 
   return (
     <div className="">
-      <div className="bg-[#7839ff] w-2/3 mx-auto p-20 rounded-b-lg">
+      <div className="bg-[#7839ff] xl:w-2/3 mx-auto p-20 rounded-b-lg">
         <h1 className="text-3xl text-white font-semibold">
           {" "}
           Available Tuitions{" "}
@@ -54,11 +54,11 @@ const AvailableTuition = () => {
           breakpoints={{
             640: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 40,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 3,
@@ -70,7 +70,7 @@ const AvailableTuition = () => {
         >
           {posts?.map((data, i) => (
             <SwiperSlide>
-              <Card className="mt-6 w-80 rounded">
+              <Card className="mt-6 w-96 lg:w-80 rounded">
                 <CardBody>
                   <Typography variant="h5" color="blue-gray" className="mb-2">
                     Tuition ID : {data.id}
@@ -94,10 +94,7 @@ const AvailableTuition = () => {
                   {userInfo ? (
                     <>
                       <Link to={`/tuition-post/${data._id}`}>
-                        <Button
-                          className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                          fullWidth
-                        >
+                        <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
                           {" "}
                           View Details
                         </Button>
