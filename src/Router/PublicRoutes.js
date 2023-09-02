@@ -8,6 +8,12 @@ import GetTeacherInformation from "../Pages/GetTeacherInformation/GetTeacherInfo
 import TeachersInfoForm from "../Components/TeacherInfoBanner/TeachersInfoForm";
 import MyProfile from "../Authentication/SignUp/MyProfile/MyProfile";
 import Blog from "../Pages/Blog/Blog";
+import TuitionPosts from "../Pages/TuitionPosts/TuitionPosts";
+
+import PostYourTuition from "../Pages/PostYourTuition/PostYourTuition";
+import TuitionPostDetails from "../Components/TuitionPostDetails";
+import TutorSearchResult from "../Components/TutorSearchResult/TutorSearchResult";
+import TutorsPage from "../Pages/Tutors/TutorsPage";
 
 const publicRoutes = createBrowserRouter([
   {
@@ -37,6 +43,26 @@ const publicRoutes = createBrowserRouter([
   {
     path: "/blog",
     element: <Blog></Blog>,
+  },
+  {
+    path: "/tuition-posts",
+    element: <TuitionPosts></TuitionPosts>,
+  },
+  {
+    path: "/post-a-tuition",
+    element: <PostYourTuition></PostYourTuition>,
+  },
+  {
+    path: "/tuition-post/:id",
+    element: <TuitionPostDetails></TuitionPostDetails>,
+  },
+  {
+    path: "/search-profile/:id",
+    element: <TutorSearchResult></TutorSearchResult>,
+  },
+  {
+    path: "/tutors",
+    element: <TutorsPage></TutorsPage>,
   },
 ]);
 

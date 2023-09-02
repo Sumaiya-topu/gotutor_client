@@ -10,25 +10,40 @@ import {
   Checkbox,
   Input,
   Textarea,
+  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
+import AuthUser from "../../Hooks/AuthUser";
 
 const TeacherInfoBody = () => {
+  const { userInfo } = AuthUser();
   return (
     <div className="infoBodyBg relative  mt-10">
       {/* information section */}
       <div className="relative  -top-[120px]">
         <div className=" w-3/4 xl:w-9/12 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#7839ff] p-5 xl:py-10 rounded-xl">
           <div className="text-white p-5 w-full text-start md:border-r border-[#b799f86b]">
-            <Link
-              to="/update-your-info"
-              className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] "
-            >
-              {" "}
-              <FaWpforms className="text-3xl  "></FaWpforms>
-            </Link>
+            {userInfo ? (
+              <Link
+                to="/update-your-info"
+                className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] "
+              >
+                {" "}
+                <FaWpforms className="text-3xl  "></FaWpforms>
+              </Link>
+            ) : (
+              <Tooltip
+                content="Sign in to become a teacher"
+                placement="right-end"
+              >
+                <div className="w-[50px] flex justify-center py-[10px] rounded-full  border border-white hover:bg-white hover:text-[#7839ff] ">
+                  <FaWpforms className="text-3xl  "></FaWpforms>
+                </div>
+              </Tooltip>
+            )}
+
             <p className=" text-[15px] font-sans mt-3">Step 1</p>
             <p className="text-lg font-sans font-light ">
               Enroll The Form & Confirm The Subject
@@ -76,8 +91,8 @@ const TeacherInfoBody = () => {
               Please Tell Us More About Your Major And Experience.
             </h1>
             <p className="mt-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              Create an account and fill up the information form to become a
+              tutor. For any further query please contact us.
             </p>
           </div>
           <div>

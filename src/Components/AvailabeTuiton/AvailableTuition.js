@@ -13,104 +13,29 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import AuthUser from "../../Hooks/AuthUser";
 
 const AvailableTuition = () => {
-  const [demoData, setDemoData] = useState([
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-  ]);
-  // console.log("demoData", demoData);
-
-  //   useEffect(() => {
-  //     async function fetchDemoData() {
-  //       try {
-  //         const response = await fetch("DemoData/book.json"); // Fetch data from public folder
-  //         const data = await response.json();
-  //         setDemoData(data);
-  //       } catch (error) {
-  //         console.error("Error fetching demo data:", error);
-  //       }
-  //     }
-
-  //     fetchDemoData();
-  //   }, []);
+  const [posts, setPosts] = useState([]);
+  const { userInfo } = AuthUser();
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/tuition").then((res) =>
+      res.json().then((data) => {
+        setPosts(data.data.result);
+      })
+    );
+  }, [posts]);
 
   return (
     <div className="">
-      <div className="bg-[#7839ff] w-2/3 mx-auto p-20 rounded-b-lg">
+      <div className="bg-[#7839ff] xl:w-2/3 mx-auto p-20 rounded-b-lg">
         <h1 className="text-3xl text-white font-semibold">
           {" "}
           Available Tuitions{" "}
@@ -129,11 +54,11 @@ const AvailableTuition = () => {
           breakpoints={{
             640: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 40,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 3,
@@ -143,9 +68,9 @@ const AvailableTuition = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {demoData?.map((data, i) => (
+          {posts?.map((data, i) => (
             <SwiperSlide>
-              <Card className="mt-6 w-80 rounded">
+              <Card className="mt-6 w-96 lg:w-80 rounded">
                 <CardBody>
                   <Typography variant="h5" color="blue-gray" className="mb-2">
                     Tuition ID : {data.id}
@@ -166,14 +91,32 @@ const AvailableTuition = () => {
                 </CardBody>
 
                 <CardFooter className="pt-0">
-                  <Button
-                    className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
-                    fullWidth
-                  >
-                    View Details
-                  </Button>
+                  {userInfo ? (
+                    <>
+                      <Link to={`/tuition-post/${data._id}`}>
+                        <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
+                          {" "}
+                          View Details
+                        </Button>
+                      </Link>
+                    </>
+                  ) : (
+                    <Tooltip
+                      content="Sign in to view contact information"
+                      placement="top"
+                    >
+                      <Button
+                        className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                        fullWidth
+                      >
+                        {" "}
+                        View Details
+                      </Button>
+                    </Tooltip>
+                  )}
+
                   <p className="text-right text-xs mt-1">
-                    Posted at : {data.postedOn}
+                    Posted at : {data.createdAt}
                   </p>
                 </CardFooter>
               </Card>
@@ -181,7 +124,7 @@ const AvailableTuition = () => {
           ))}
         </Swiper>
         <div className="hover:translate-x-1 duration-300 mt-5">
-          <Link to="/all-tuitions" className="text-white  ">
+          <Link to="/tuition-posts" className="text-white  ">
             View all tuitions{" "}
             <AiOutlineDoubleRight className="inline"></AiOutlineDoubleRight>
           </Link>
