@@ -1,4 +1,4 @@
-import { Input } from "@material-tailwind/react";
+import { Button, Input } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -105,6 +105,13 @@ const TuitionPostForm = () => {
         {" "}
         <div className="flex flex-wrap lg:flex-nowrap gap-5">
           <div className="w-full">
+            {userInfo ? (
+              <></>
+            ) : (
+              <p className="text-red-500 font-sans text-xs mt-2">
+                Please sign up for post
+              </p>
+            )}
             <h2 className="text-3xl text-[#616f93] font-medium  ">
               Request a Tutor
             </h2>
@@ -219,11 +226,21 @@ const TuitionPostForm = () => {
             ></Input>
           </div>
 
-          <input
-            className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer"
-            type="submit"
-            value="Submit"
-          />
+          {userInfo ? (
+            <input
+              className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer"
+              type="submit"
+              value="Post"
+            />
+          ) : (
+            <Button
+              disabled
+              className="py-3 w-full bg-[#616f93] mt-10 border-2 text-white border-white rounded-md  font-medium cursor-pointer shadow-none hover:shadow-none"
+            >
+              {" "}
+              Post
+            </Button>
+          )}
         </form>
       </div>
     </div>

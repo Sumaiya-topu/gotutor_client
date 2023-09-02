@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const TutorsPage = () => {
   const [tutors, setTutors] = useState([]);
-  const [toggleOpen, setToggleOpen] = React.useState(false);
+
   const { userInfo } = AuthUser();
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/users/by-role").then((res) =>
@@ -29,7 +29,7 @@ const TutorsPage = () => {
   return (
     <div>
       <ComplexNavbar></ComplexNavbar>
-      <div className="w-3/4 mx-auto">
+      <div className="w-2/3 mx-auto">
         <div className="my-10">
           <h1 className="text-3xl text-[#7839ff] font-semibold">
             {" "}
@@ -37,9 +37,13 @@ const TutorsPage = () => {
             <span className="font-bold"> ____________________________</span>
           </h1>
         </div>
-        <div>
+        <div className=" grid grid-cols-2 gap-4">
           {tutors?.map((tutor, i) => (
-            <Card color="transparent" shadow={false} className="w-full pr-10">
+            <Card
+              color="transparent"
+              shadow={false}
+              className="w-full p-10 shadow-lg "
+            >
               <CardHeader
                 color="transparent"
                 floated={false}
@@ -86,7 +90,7 @@ const TutorsPage = () => {
                   <></>
                 )}
 
-                {userInfo?.role ? (
+                {userInfo ? (
                   <>
                     <Link to={`/search-profile/${tutor._id}`}>
                       <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
@@ -97,19 +101,15 @@ const TutorsPage = () => {
                   </>
                 ) : (
                   <div className="mt-3">
-                    <Button
-                      onClick={toggleOpen}
-                      className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
-                    >
+                    <Button className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1">
                       {" "}
                       View Details
                     </Button>
-                    <Collapse open={toggleOpen}>
-                      <Typography className="text-red-500 text-xs">
-                        <Link to="/login"> Login</Link> to View {tutor.fullName}
-                        's profile and resume
-                      </Typography>
-                    </Collapse>
+
+                    <Typography className="text-red-500 text-xs">
+                      <Link to="/login"> Login</Link> to View {tutor.fullName}
+                      's profile and resume
+                    </Typography>
                   </div>
                 )}
               </CardBody>

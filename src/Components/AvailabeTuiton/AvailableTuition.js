@@ -16,100 +16,22 @@ import {
   Popover,
   PopoverContent,
   PopoverHandler,
+  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import AuthUser from "../../Hooks/AuthUser";
 
 const AvailableTuition = () => {
-  const [demoData, setDemoData] = useState([
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-    {
-      id: 552258,
-      class: "Nursery , All Subject",
-      location: "Mohammadpur",
-      days: "5 days/week",
-      salary: "5000-6000 tk/month",
-      postedOn: "24 Aug, 2023 07:57 PM",
-    },
-  ]);
-  // console.log("demoData", demoData);
-
-  //   useEffect(() => {
-  //     async function fetchDemoData() {
-  //       try {
-  //         const response = await fetch("DemoData/book.json"); // Fetch data from public folder
-  //         const data = await response.json();
-  //         setDemoData(data);
-  //       } catch (error) {
-  //         console.error("Error fetching demo data:", error);
-  //       }
-  //     }
-
-  //     fetchDemoData();
-  //   }, []);
+  const [posts, setPosts] = useState([]);
+  const { userInfo } = AuthUser();
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/tuition").then((res) =>
+      res.json().then((data) => {
+        setPosts(data.data.result);
+      })
+    );
+  }, [posts]);
 
   return (
     <div className="">
@@ -146,7 +68,7 @@ const AvailableTuition = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {demoData?.map((data, i) => (
+          {posts?.map((data, i) => (
             <SwiperSlide>
               <Card className="mt-6 w-80 rounded">
                 <CardBody>
@@ -169,21 +91,35 @@ const AvailableTuition = () => {
                 </CardBody>
 
                 <CardFooter className="pt-0">
-                  <Popover>
-                    <PopoverHandler>
+                  {userInfo ? (
+                    <>
+                      <Link to={`/tuition-post/${data._id}`}>
+                        <Button
+                          className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
+                          fullWidth
+                        >
+                          {" "}
+                          View Details
+                        </Button>
+                      </Link>
+                    </>
+                  ) : (
+                    <Tooltip
+                      content="Sign in to view contact information"
+                      placement="top"
+                    >
                       <Button
                         className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1"
                         fullWidth
                       >
+                        {" "}
                         View Details
                       </Button>
-                    </PopoverHandler>
-                    <PopoverContent>
-                      Please login to view contact information and details.
-                    </PopoverContent>
-                  </Popover>
+                    </Tooltip>
+                  )}
+
                   <p className="text-right text-xs mt-1">
-                    Posted at : {data.postedOn}
+                    Posted at : {data.createdAt}
                   </p>
                 </CardFooter>
               </Card>
@@ -191,7 +127,7 @@ const AvailableTuition = () => {
           ))}
         </Swiper>
         <div className="hover:translate-x-1 duration-300 mt-5">
-          <Link to="/all-tuitions" className="text-white  ">
+          <Link to="/tuition-posts" className="text-white  ">
             View all tuitions{" "}
             <AiOutlineDoubleRight className="inline"></AiOutlineDoubleRight>
           </Link>

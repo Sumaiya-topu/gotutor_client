@@ -70,10 +70,10 @@ const Hero = () => {
   return (
     <div className="">
       <div className="">
-        <div className=" h-[600px] flex gap-10  w-2/3 mx-auto">
+        <div className=" h-[600px] flex flex-wrap md:flex-nowrap gap-10 w-11/12 xl:w-2/3 mx-auto">
           {/* <p>vaaa</p>
       <p>vaaa</p> */}
-          <div className="flex items-center  w-full">
+          <div className="flex items-center   w-full">
             <div className=" bg-black/20 rounded-lg w-full ">
               {" "}
               <div className="mt-10 ml-10">
@@ -86,7 +86,7 @@ const Hero = () => {
                 </p>
               </div>
               <form onSubmit={handleSubmit(handleSearch)} className=" p-10">
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap md:flex-nowrap">
                   <Input
                     {...register("searchBox")}
                     color="indigo"
@@ -171,30 +171,34 @@ const Hero = () => {
                                 )}
 
                                 {userInfo?.role ? (
-                                  <>
+                                  <div className="flex justify-end">
+                                    {" "}
                                     <Link to={`/search-profile/${tutor._id}`}>
                                       <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
                                         {" "}
                                         View Details
                                       </Button>
                                     </Link>
-                                  </>
+                                  </div>
                                 ) : (
-                                  <div className="mt-3">
-                                    <Button
-                                      onClick={toggleOpen}
-                                      className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
-                                    >
+                                  <div className="mt-3 flex justify-end">
+                                    <div>
                                       {" "}
-                                      View Details
-                                    </Button>
-                                    <Collapse open={toggleOpen}>
-                                      <Typography className="text-red-500 text-xs">
-                                        <Link to="/login"> Login</Link> to View{" "}
-                                        {tutor.fullName}
-                                        's profile and resume
-                                      </Typography>
-                                    </Collapse>
+                                      <Button
+                                        onClick={toggleOpen}
+                                        className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
+                                      >
+                                        {" "}
+                                        View Details
+                                      </Button>
+                                      <Collapse open={toggleOpen}>
+                                        <Typography className="text-red-500 text-xs">
+                                          <Link to="/login"> Login</Link> to
+                                          View {tutor.fullName}
+                                          's profile and resume
+                                        </Typography>
+                                      </Collapse>
+                                    </div>
                                   </div>
                                 )}
                               </CardBody>
@@ -211,17 +215,17 @@ const Hero = () => {
               {/* <TutorSearchResult tutors={tutors}></TutorSearchResult> */}
             </div>
           </div>
-          <div className="mt-36 ">
+          <div className="lg:mt-36  w-full">
             <h3 className="text-white/90 text-end font-sans">
-              <span className="text-3xl">Welcome to</span> - <br />{" "}
-              <span className="text-6xl ">
+              <span className="text-lg md:text-3xl">Welcome to</span> - <br />{" "}
+              <span className="text-4xl md:text-6xl ">
                 Go<span className="text-[#7839ff] font-bold">Tutor</span>
               </span>{" "}
             </h3>
             <p className="text-white/90 mt-5 text-end">
               <span className="text-xl font-sans">Your Path to Academic</span>{" "}
               <br />{" "}
-              <span className="text-7xl text-[#ff6739] font-semibold font-serif">
+              <span className="text-4xl md:text-5xl lg:text-7xl text-[#ff6739] font-semibold font-serif">
                 {" "}
                 Excellence!
               </span>

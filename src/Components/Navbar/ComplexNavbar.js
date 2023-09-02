@@ -79,7 +79,7 @@ function ProfileMenu() {
           />
         </Button>
       </MenuHandler>
-      <MenuList className="p-1">
+      <MenuList className="p-2">
         {profileMenuItems.map(({ label, icon, route }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
@@ -87,7 +87,7 @@ function ProfileMenu() {
               to={route}
               key={label}
               onClick={isLastItem ? logout : closeMenu}
-              className={`flex items-center gap-2 rounded ${
+              className={`flex items-center gap-2 rounded mb-2${
                 isLastItem
                   ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
                   : ""
