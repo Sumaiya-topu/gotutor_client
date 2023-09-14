@@ -9,7 +9,7 @@ const TuitionPostDetails = () => {
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/tuition/${id}`)
+    fetch(`https://go-tutor-server.zayedabdullah.com/api/v1/tuition/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setDetails(data.data);

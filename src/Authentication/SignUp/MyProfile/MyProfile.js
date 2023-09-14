@@ -31,7 +31,7 @@ const MyProfile = () => {
   const [open, setOpen] = React.useState(false);
   const toggleOpen = () => setOpen((cur) => !cur);
 
-  const { userInfo, role } = AuthUser();
+  const { userInfo } = AuthUser();
   const {
     register,
     handleSubmit,
@@ -48,7 +48,7 @@ const MyProfile = () => {
     setImageUrl(user?.imageURL);
   }, [user]);
 
-  console.log("user role from profile", user.role);
+  console.log("user role from profile", user?.role);
 
   const handleUploadImage = async (event) => {
     const image = event.target.files[0];
@@ -120,7 +120,7 @@ const MyProfile = () => {
                   </div>
                 </Link>
               </div>
-              {user.role === "tutor" ? (
+              {user?.role === "tutor" ? (
                 <button className="py-2 px-10  bg-gradient-to-r bg-[#7839ff] rounded-md text-white font-medium cursor-pointer mt-5">
                   Resume
                 </button>
@@ -129,9 +129,9 @@ const MyProfile = () => {
               )}
             </div>
           </div>
-          <h2 className="text-xl font-semibold mt-5">{user.fullName}</h2>
+          <h2 className="text-xl font-semibold mt-5">{user?.fullName}</h2>
         </div>
-        {user.role === "tutor" ? (
+        {user?.role === "tutor" ? (
           <div>
             <div>
               <div className="flex">
@@ -188,14 +188,14 @@ const MyProfile = () => {
                               <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                             </svg>
                           </ListItemPrefix>
-                          {user.email}
+                          {user?.email}
                         </ListItem>
                       </a>
                     </List>
                   </PopoverContent>
                 </Popover>
               </div>
-              {user.experience ? (
+              {user?.experience ? (
                 <h1>
                   Experience : Having {user.experience} experience as a home
                   tutor.
@@ -205,7 +205,7 @@ const MyProfile = () => {
               )}
               <p>
                 Qualification :{" "}
-                <span className="font-bold">{user.qualification}</span>{" "}
+                <span className="font-bold">{user?.qualification}</span>{" "}
               </p>
               <p>
                 Area Covered :{" "}
@@ -217,22 +217,22 @@ const MyProfile = () => {
               <div className="h-1 w-1/3 bg-[#7839ff]"></div>
               <p className="my-2">
                 Expected minimum salary :{" "}
-                <span className="font-bold">{user.expectedSalary}/month</span>{" "}
+                <span className="font-bold">{user?.expectedSalary}/month</span>{" "}
               </p>
               <div className=" h-[1px] bg-[#7839ff]"></div>
               <p className="my-2">
                 Days per week :{" "}
-                <span className="font-bold">{user.daysPerWeek} days/week</span>
+                <span className="font-bold">{user?.daysPerWeek} days/week</span>
               </p>
               <div className=" h-[1px] bg-[#7839ff]"></div>
               <p className="my-2">
                 Preferred medium :{" "}
-                <span className="font-bold">{user.preferredMedium}</span>
+                <span className="font-bold">{user?.preferredMedium}</span>
               </p>
               <div className=" h-[1px] bg-[#7839ff]"></div>
               <p className="my-2">
                 Preferred areas :{" "}
-                <span className="font-bold"> {user.preferredArea}</span>
+                <span className="font-bold"> {user?.preferredArea}</span>
               </p>
               <div className=" h-[1px] bg-[#7839ff]"></div>
             </div>

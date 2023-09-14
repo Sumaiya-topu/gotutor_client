@@ -26,10 +26,11 @@ const AvailableTuition = () => {
   const [posts, setPosts] = useState([]);
   const { userInfo } = AuthUser();
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/tuition").then((res) =>
-      res.json().then((data) => {
-        setPosts(data.data.result);
-      })
+    fetch("https://go-tutor-server.zayedabdullah.com/api/v1/tuition").then(
+      (res) =>
+        res.json().then((data) => {
+          setPosts(data.data.result);
+        })
     );
   }, [posts]);
 
