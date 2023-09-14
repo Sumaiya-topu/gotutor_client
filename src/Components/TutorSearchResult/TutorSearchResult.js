@@ -17,7 +17,7 @@ const TutorSearchResult = () => {
   const [tutorData, setTutorData] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/users/${id}`)
+    fetch(`https://go-tutor-server.zayedabdullah.com/api/v1/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -60,7 +60,9 @@ const Hero = () => {
 
   const handleSearch = (data) => {
     console.log("Search form", data);
-    fetch(`http://localhost:5000/api/v1/users?searchTerm=${data.searchBox}`)
+    fetch(
+      `https://go-tutor-server.zayedabdullah.com/api/v1/users?searchTerm=${data.searchBox}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("Search data", data.data.data.result);
@@ -110,105 +112,116 @@ const Hero = () => {
                     }}
                   >
                     <DialogHeader>Your Search Result</DialogHeader>
-                    {tutors.length !== 0 ? (
-                      tutors.map((tutor) => (
-                        <>
-                          <DialogBody divider>
-                            <Card
-                              color="transparent"
-                              shadow={false}
-                              className="w-full pr-10"
-                            >
-                              <CardHeader
-                                color="transparent"
-                                floated={false}
-                                shadow={false}
-                                className="mx-0 flex items-center gap-4 pt-0 pb-8 borders"
-                              >
-                                <Avatar
-                                  size="lg"
-                                  variant="circular"
-                                  src={tutor.imageURL}
-                                  alt={tutor.fullName}
-                                />
-                                <div className="flex w-full flex-col gap-0.5">
-                                  <div className="flex items-center justify-between">
-                                    <Typography variant="h5" color="blue-gray">
-                                      {tutor.fullName}
-                                    </Typography>
-                                    <div className="5 flex items-center gap-0">
-                                      <StarIcon />
-                                      <StarIcon />
-                                      <StarIcon />
-                                      <StarIcon />
-                                      <StarIcon />
-                                    </div>
-                                  </div>
-                                  <Typography color="blue-gray">
-                                    {tutor.address} || {tutor.expectedSalary}
-                                    tk/month
-                                  </Typography>
-                                </div>
-                              </CardHeader>
-                              <CardBody className="mb-6 p-0 ml-5">
-                                <Typography>
-                                  Expertise :{" "}
-                                  <span className="font-bold">
-                                    {" "}
-                                    {tutor.preferredSubject}{" "}
-                                  </span>{" "}
-                                  <br />
-                                </Typography>
-                                {tutor?.areaCovered ? (
-                                  <Typography>
-                                    Area Covered :{" "}
-                                    <span className="font-bold">
-                                      {tutor.areaCovered}
-                                    </span>
-                                  </Typography>
-                                ) : (
-                                  <></>
-                                )}
-
-                                {userInfo?.role ? (
-                                  <div className="flex justify-end">
-                                    {" "}
-                                    <Link to={`/search-profile/${tutor._id}`}>
-                                      <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
-                                        {" "}
-                                        View Details
-                                      </Button>
-                                    </Link>
-                                  </div>
-                                ) : (
-                                  <div className="mt-3 flex justify-end">
-                                    <div>
-                                      {" "}
-                                      <Button
-                                        onClick={toggleOpen}
-                                        className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
-                                      >
-                                        {" "}
-                                        View Details
-                                      </Button>
-                                      <Collapse open={toggleOpen}>
-                                        <Typography className="text-red-500 text-xs">
-                                          <Link to="/login"> Login</Link> to
-                                          View {tutor.fullName}
-                                          's profile and resume
+                    <div className="grid grid-cols-2">
+                      {tutors.length !== 0 ? (
+                        tutors.map((tutor) => (
+                          <>
+                            <DialogBody divider className="">
+                              <div>
+                                {" "}
+                                <Card
+                                  color="transparent"
+                                  shadow={false}
+                                  className="w-full pr-10"
+                                >
+                                  <CardHeader
+                                    color="transparent"
+                                    floated={false}
+                                    shadow={false}
+                                    className="mx-0 flex items-center gap-4 pt-0 pb-8 borders"
+                                  >
+                                    <Avatar
+                                      size="lg"
+                                      variant="circular"
+                                      src={tutor.imageURL}
+                                      alt={tutor.fullName}
+                                    />
+                                    <div className="flex w-full flex-col gap-0.5">
+                                      <div className="flex items-center justify-between">
+                                        <Typography
+                                          variant="h5"
+                                          color="blue-gray"
+                                        >
+                                          {tutor.fullName}
                                         </Typography>
-                                      </Collapse>
+                                        <div className="5 flex items-center gap-0">
+                                          <StarIcon />
+                                          <StarIcon />
+                                          <StarIcon />
+                                          <StarIcon />
+                                          <StarIcon />
+                                        </div>
+                                      </div>
+                                      <Typography color="blue-gray">
+                                        {tutor.address} ||{" "}
+                                        {tutor.expectedSalary}
+                                        tk/month
+                                      </Typography>
                                     </div>
-                                  </div>
-                                )}
-                              </CardBody>
-                            </Card>
-                          </DialogBody>
-                        </>
-                      ))
-                    ) : (
-                      <DialogBody> No such result</DialogBody>
-                    )}
+                                  </CardHeader>
+                                  <CardBody className="mb-6 p-0 ml-5">
+                                    <Typography>
+                                      Expertise :{" "}
+                                      <span className="font-bold">
+                                        {" "}
+                                        {tutor.preferredSubject}{" "}
+                                      </span>{" "}
+                                      <br />
+                                    </Typography>
+                                    {tutor?.areaCovered ? (
+                                      <Typography>
+                                        Area Covered :{" "}
+                                        <span className="font-bold">
+                                          {tutor.areaCovered}
+                                        </span>
+                                      </Typography>
+                                    ) : (
+                                      <></>
+                                    )}
+
+                                    {userInfo?.role ? (
+                                      <div className="flex justify-end">
+                                        {" "}
+                                        <Link
+                                          to={`/search-profile/${tutor._id}`}
+                                        >
+                                          <Button className="mt-1 shadow-none bg-[#7839ff] hover:shadow-none hover:-translate-y-1">
+                                            {" "}
+                                            View Details
+                                          </Button>
+                                        </Link>
+                                      </div>
+                                    ) : (
+                                      <div className="mt-3 flex justify-end">
+                                        <div>
+                                          {" "}
+                                          <Button
+                                            onClick={toggleOpen}
+                                            className="mt-1 shadow-none bg-[#7839ff] py-1 hover:shadow-none hover:-translate-y-1"
+                                          >
+                                            {" "}
+                                            View Details
+                                          </Button>
+                                          <Collapse open={toggleOpen}>
+                                            <Typography className="text-red-500 text-xs">
+                                              <Link to="/login"> Login</Link> to
+                                              View {tutor.fullName}
+                                              's profile and resume
+                                            </Typography>
+                                          </Collapse>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </CardBody>
+                                </Card>
+                              </div>
+                            </DialogBody>
+                          </>
+                        ))
+                      ) : (
+                        <DialogBody> No such result</DialogBody>
+                      )}
+                    </div>
                   </Dialog>
                 </div>
               </form>

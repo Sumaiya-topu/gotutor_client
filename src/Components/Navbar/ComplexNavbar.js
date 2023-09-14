@@ -22,6 +22,7 @@ import {
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import { CgEditUnmask } from "react-icons/cg";
+import { BsPeople } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import AuthUser from "../../Hooks/AuthUser";
 import GetUserHook from "../../Hooks/FetchFunction/GetUserHook";
@@ -36,7 +37,7 @@ function ProfileMenu() {
   const { logout, token, userInfo } = AuthUser();
   console.log("userInfo from nav ", token);
   useEffect(() => {
-    const baseUrl = `http://localhost:5000/api/v1/users/${userInfo._id}`;
+    const baseUrl = `https://go-tutor-server.zayedabdullah.com/api/v1/users/${userInfo._id}`;
     GetUserHook(baseUrl, setUser, setLoading);
   }, [userInfo._id]);
 
@@ -128,7 +129,7 @@ const navListItems = [
   },
   {
     label: "Tutors",
-    icon: CgEditUnmask,
+    icon: BsPeople,
     route: "/tutors",
   },
   {

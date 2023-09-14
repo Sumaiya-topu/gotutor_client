@@ -18,7 +18,9 @@ const TutorsPage = () => {
 
   const { userInfo } = AuthUser();
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users/by-role").then((res) =>
+    fetch(
+      "https://go-tutor-server.zayedabdullah.com/api/v1/users/by-role"
+    ).then((res) =>
       res.json().then((data) => {
         setTutors(data);
         // console.log(data);

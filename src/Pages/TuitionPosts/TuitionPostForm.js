@@ -41,13 +41,16 @@ const TuitionPostForm = () => {
       location: data.area,
     };
 
-    fetch(`http://localhost:5000/api/v1/tuition/${userInfo._id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
+    fetch(
+      `https://go-tutor-server.zayedabdullah.com/api/v1/tuition/${userInfo._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "success") {
